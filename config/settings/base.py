@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'djoser',
     'corsheaders',
     'todo_app.apps.TodoAppConfig',
+    "django_nose",
 ]
 
 MIDDLEWARE = [
@@ -79,17 +80,6 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': 'db',
-        'PORT': 5432,
-    }
-}
 
 
 # Password validation
@@ -144,11 +134,4 @@ SIMPLE_JWT = {
 
 # AUTH_MODEL
 AUTH_USER_MODEL = 'todo_app.User'
-
-# CORS
-CORS_ALLOW_ALL_ORIGINS = False
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:8080',
-    'http://127.0.0.1:8080',
-]
 
