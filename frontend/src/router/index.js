@@ -1,7 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import store from "@/store";
-import Home from "@/views/Home.vue";
+//import Home from "@/views/Home.vue";
 //import LoginPage from "@/views/LoginPage.vue";
 import TaskCreatePage from "@/views/TaskCreatePage.vue";
 import TaskEditPage from "@/views/TaskEditPage.vue";
@@ -11,6 +11,7 @@ import PasswordUpdatePage from "@/views/PasswordUpdatePage.vue";
 import UsernameUpdatePage from "@/views/UsernameUpdatePage.vue";
 import EmailUpdatePage from "@/views/EmailUpdatePage.vue";
 import Login from "@/components/templates/LoginView";
+import Home from "@/components/templates/HomeView";
 
 Vue.use(VueRouter);
 

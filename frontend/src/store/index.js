@@ -170,6 +170,9 @@ const taskModule = {
     },
     set_update_false(state) {
       state.update_flag = false;
+    },
+    fetchTaskList(state, payload) {
+      state.tasks = payload.taskList;
     }
   },
   actions: {
@@ -184,6 +187,12 @@ const taskModule = {
     },
     setUpdateFlagFalse(context) {
       context.commit("set_update_false");
+    },
+    fetchList(context) {
+      return api.get("/task/list/").then((response) => {
+        console.log(response.data);
+        context.commit("fetchTaskList", { taskList: response.data });
+      });
     }
   }
 }
@@ -192,7 +201,7 @@ const store = new Vuex.Store({
   modules: {
     auth: authModule,
     message: messageModule,
-    tasks: taskModule,
+    task: taskModule,
   },
 });
 
