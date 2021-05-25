@@ -29,10 +29,7 @@ class UserSerializer(serializers.ModelSerializer):
         if confirm_password is None:
             return data
         previous_password = self.instance.password
-        print(confirm_password)
-        print(previous_password)
         if check_password(confirm_password, previous_password) is False:
-            print("aaaaaaaa")
             raise serializers.ValidationError("現在のパスワードが間違っています")
         return data
 
