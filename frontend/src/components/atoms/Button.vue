@@ -8,9 +8,9 @@
 export default {
   name: "Button",
   methods: {
-    handleClick(ev) {
+    handleClick() {
       // `click` イベントを発行
-      this.$emit("click", ev);
+      this.$emit("click");
     },
   },
 };

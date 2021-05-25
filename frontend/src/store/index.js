@@ -25,6 +25,9 @@ const authModule = {
   },
   actions: {
     login(context, payload) {
+      console.log("aaaa");
+      console.log(payload.email);
+      console.log(payload.password);
       return api
         .post("/auth/jwt/create/", {
           email: payload.email,

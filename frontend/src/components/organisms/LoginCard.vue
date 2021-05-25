@@ -18,9 +18,15 @@ export default {
   },
   methods: {
     handleLogin(authInfo) {
-      // this.$store.dispatch('login', authInfo) とか
-      console.log(authInfo);
-      return "ok";
+      return this.$store.dispatch('auth/login', authInfo)
+        .then(() => {
+          console.log("Login succeeded.");
+          this.$store.dispatch("message/setKeepInfoMessage", {
+            message: "ログインしました．"
+          });
+          const next = this.$route.query.next || "/";
+          this.$router.replace(next);
+        });
     },
   },
 };

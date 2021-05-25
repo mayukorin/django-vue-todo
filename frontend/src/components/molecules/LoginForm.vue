@@ -51,11 +51,10 @@ export default {
     };
   },
   methods: {
-    handleClick(ev) {
-        console.log(ev);
-        if (!this.$refs.form.validate()) return;
+    handleClick() {
+        if (!this.$refs.form.validate()) { return };
         // ok と出力されるはず
-        console.log(this.onlogin({ email: this.form.email, password: this.form.password }));
+        return this.onlogin({ email: this.form.email, password: this.form.password });
         /*
         this.onlogin({ email: this.form.email, password: this.form.password})
             .catch(err => {
