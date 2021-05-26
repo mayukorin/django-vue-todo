@@ -23,7 +23,7 @@ import Button from '@/components/atoms/Button';
 const REGEX_EMAIL = /.+@.+/;
 
 export default {
-  name: "LoginForm",
+  name: 'LoginForm',
   components: {
     Button,
   },

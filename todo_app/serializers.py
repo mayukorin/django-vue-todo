@@ -46,6 +46,7 @@ class TaskSerializer(serializers.ModelSerializer):
         validated_data['user'] = validated_data.get('user_id', None)
 
         if validated_data['user'] is None:
+            print("ww")
             raise serializers.ValidationError("User not found.")
 
         del validated_data['user_id']

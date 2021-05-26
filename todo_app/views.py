@@ -65,6 +65,7 @@ class TaskCreateAPIView(generics.CreateAPIView):
 
     def create(self, request, *args, **kwargs):
         request.data['user_id'] = request.user.id
+        # print(request.data['user_id'])
         response = super().create(request, *args, **kwargs)
         return response
 '''

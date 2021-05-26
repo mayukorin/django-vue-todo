@@ -173,15 +173,20 @@ const taskModule = {
     },
     fetchTaskList(state, payload) {
       state.tasks = payload.taskList;
+    },
+    AddTask(state, payload) {
+      state.tasks.push(payload);
     }
   },
   actions: {
     setTasks(context, payload) {
       context.commit("set", payload);
     },
+    /*
     addTask(context, payload) {
       context.commit("addTask", payload);
     },
+    */
     setUpdateFlagTrue(context) {
       context.commit("set_update_true");
     },
@@ -193,6 +198,20 @@ const taskModule = {
         console.log(response.data);
         context.commit("fetchTaskList", { taskList: response.data });
       });
+    },
+    addTask(context, payload) {
+      return api({
+        method: "post",
+        url: "/task/create/",
+        data: {
+            title: payload.title,
+            content: payload.content,
+            deadline: payload.deadline,
+        }
+      }).then((response) => {
+        console.log(response.data);
+        context.commit("addTask", response.data);
+      })
     }
   }
 }

@@ -2,7 +2,7 @@
     <v-navigation-drawer app v-model="drawer" class="primary">
         <v-row v-if="true">
             <v-col class="text-center mt-4 mb-3">
-                あいうえお
+                <TaskCreatePopup />
             </v-col>
         </v-row>
         <v-list>
@@ -28,7 +28,13 @@
     </v-navigation-drawer>
 </template>
 <script>
+import TaskCreatePopup from "@/components/organisms/TaskCreatePopup";
+
 export default {
+    name: 'Drawer',
+    components: {
+        TaskCreatePopup
+    },
     props: {
         drawerNotification: {
             type: Boolean,
