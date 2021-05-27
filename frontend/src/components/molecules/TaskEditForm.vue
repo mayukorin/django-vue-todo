@@ -6,6 +6,7 @@
             :rules="rules.title"
             label="タスク名"
             maxlength="255"
+            required
             prepend-icon="mdi-folder"
         />
         <v-textarea
@@ -29,7 +30,7 @@
             >
             </v-date-picker>
         </v-menu>
-        <Button @click="handleClick">作成</Button>
+        <Button @click="handleClick">更新</Button>
     </v-form>
 </template>
 <script>
@@ -38,15 +39,19 @@ import 'vue-ctk-date-time-picker/dist/vue-ctk-date-time-picker.css';
 import {format, parseISO } from 'date-fns'
 
 export default {
-    name: 'TaskCreateForm',
+    name: 'TaskEditForm',
     components: {
         Button
     },
     props: {
-        onCreate: {
+        onUpdate: {
             type: Function,
             required: true
-        }
+        },
+        task: {
+            type: Object,
+            required: true
+        },
     },
     data: () => ({
         form: {
@@ -64,20 +69,18 @@ export default {
     methods: {
         handleClick() {
             if (!this.$refs.form.validate()) { return };
-            this.onCreate({ title: this.form.title, content: this.form.content, deadline: this.form.deadline})
-            /*
-                .then(() => {
-                    this.form.title = '';
-                    this.form.content = '';
-                    this.form.deadline = format(parseISO(new Date().toISOString()), 'yyyy-MM-dd');
-                })
-                */
+            this.onUpdate({ title: this.form.title, content: this.form.content, deadline: this.form.deadline, pk:this.task.pk});
         }
     },
     computed: {
         formattedDate() {
             return this.form.deadline ? format(parseISO(this.form.deadline), 'yyyy/MM/dd') : ''
         }
+    },
+    created() {
+        this.form.title = this.task.title;
+        this.form.content = this.task.content;
+        this.form.deadline = this.task.deadline;
     }
 };
 </script>

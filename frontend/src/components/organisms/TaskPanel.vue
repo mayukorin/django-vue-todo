@@ -7,7 +7,7 @@
                         <div>{{ task.title }}</div>
                     </v-col>
                     <v-col cols="6" md="2">                  
-                        aaaa
+                        <TaskEditPopup :task="task" />
                     </v-col>
                     <v-col cols="6" md="2">
                         <div class="caption grey--text">delete</div>
@@ -23,12 +23,16 @@
 </template>
 
 <script>
+import TaskEditPopup from "@/components/organisms/TaskEditPopup";
 export default {
   name: 'TaskPanel',
+  components: {
+      TaskEditPopup
+  },
   props: {
       task: {
           type: Object
       }
-  }
+  },
 };
 </script>

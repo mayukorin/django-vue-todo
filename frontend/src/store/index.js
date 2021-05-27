@@ -176,6 +176,12 @@ const taskModule = {
     },
     AddTask(state, payload) {
       state.tasks.push(payload);
+    },
+    UpdateTask(state, payload) {
+      const task = state.tasks.find(task => task.pk === payload.pk);
+      task.title = payload.title;
+      task.content = payload.content;
+      task.deadline = payload.deadline;
     }
   },
   actions: {
@@ -210,7 +216,21 @@ const taskModule = {
         }
       }).then((response) => {
         console.log(response.data);
-        context.commit("addTask", response.data);
+        context.commit("AddTask", response.data);
+      })
+    },
+    updateTask(context, payload) {
+      return api({
+        method: "patch",
+        url: `/task/update/${payload.pk}/`,
+        data: {
+          title: payload.title,
+          content: payload.content,
+          deadlie: payload.deadline
+        }
+      }).then((response) => {
+        console.log(response.data);
+        context.commit("UpdateTask", response.data);
       })
     }
   }

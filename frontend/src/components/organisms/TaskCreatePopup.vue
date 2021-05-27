@@ -19,7 +19,6 @@ export default {
     }),
     methods: {
         dialogFalse() {
-            console.log("emit");
             this.dialog = false;
         }
     },
