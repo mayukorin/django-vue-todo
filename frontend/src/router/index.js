@@ -5,13 +5,13 @@ import store from "@/store";
 //import LoginPage from "@/views/LoginPage.vue";
 import TaskCreatePage from "@/views/TaskCreatePage.vue";
 import TaskEditPage from "@/views/TaskEditPage.vue";
-import UserCreatePage from "@/views/UserCreatePage.vue";
 import UserEditPage from "@/views/UserEditPage.vue";
 import PasswordUpdatePage from "@/views/PasswordUpdatePage.vue";
 import UsernameUpdatePage from "@/views/UsernameUpdatePage.vue";
 import EmailUpdatePage from "@/views/EmailUpdatePage.vue";
 import Login from "@/components/templates/LoginView";
 import Home from "@/components/templates/HomeView";
+import UserCreate from "@/components/templates/UserCreateView";
 
 Vue.use(VueRouter);
 
@@ -29,7 +29,7 @@ const routes = [
   },{
     path: "/user-create",
     name: "UserCreate",
-    component: UserCreatePage,
+    component: UserCreate,
   },{
     path: "/user-edit",
     name: "UserEdit",

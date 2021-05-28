@@ -51,6 +51,28 @@ const authModule = {
         context.commit("set", { user: user });
       });
     },
+    signin(context, payload) {
+      return api({
+        method: "post",
+        url: "/user/create/",
+        data: {
+          email: payload.email,
+          username: payload.username,
+          password: payload.password
+        }
+      }).then((response) => {
+        //ログイン
+        return api
+        .post("/auth/jwt/create/", {
+          email: response.data.email,
+          password: payload.password,
+        })
+        .then((response) => {
+          localStorage.setItem("access", response.data.access);
+          return context.dispatch("renew");
+        });
+      })
+    }
   },
 };
 
@@ -182,6 +204,10 @@ const taskModule = {
       task.title = payload.title;
       task.content = payload.content;
       task.deadline = payload.deadline;
+    },
+    DeleteTask(state, payload) {
+      const task = state.tasks.find(task => task.pk === payload.pk);
+      state.tasks.splice(state.tasks.indexOf(task), 1)
     }
   },
   actions: {
@@ -231,6 +257,15 @@ const taskModule = {
       }).then((response) => {
         console.log(response.data);
         context.commit("UpdateTask", response.data);
+      })
+    },
+    deleteTask(context, payload) {
+      return api({
+        method: "delete",
+        url: `task/delete/${payload.pk}/`,
+      }).then((response) => {
+        console.log(response);
+        context.commit("DeleteTask", payload);
       })
     }
   }

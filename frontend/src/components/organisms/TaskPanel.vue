@@ -9,7 +9,7 @@
                     <v-col cols="6" md="2">                  
                         <TaskEditPopup :task="task" />
                     </v-col>
-                    <v-col cols="6" md="2">
+                    <v-col cols="6" md="2"  @click="taskDelete">
                         <div class="caption grey--text">delete</div>
                         <v-icon>mdi-delete</v-icon>
                     </v-col>
@@ -34,5 +34,15 @@ export default {
           type: Object
       }
   },
+  methods: {
+      taskDelete: function() {
+          console.log(this.task.pk);
+          return this.$store.dispatch('task/deleteTask', this.task)
+                .then(() => {
+                    console.log("Task Delete succeeded.");
+                });
+
+      }
+  }
 };
 </script>
