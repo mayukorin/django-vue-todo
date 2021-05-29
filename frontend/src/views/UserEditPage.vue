@@ -14,7 +14,7 @@
                                     <v-list-item-title>{{ preUser.email }}</v-list-item-title>
                                 </v-list-item-content>
                                 <v-list-item-action>
-                                    <v-btn depressed class="success white--text" @click="GoUpdatePage('/email-update')">編集</v-btn>
+                                    <Button @click="GoUpdatePage('/email-update')">編集</Button>
                                 </v-list-item-action>
                             </v-list-item>
                             <v-divider></v-divider>
@@ -24,7 +24,7 @@
                                     <v-list-item-title>{{ preUser.username }}</v-list-item-title>
                                 </v-list-item-content>
                                 <v-list-item-action>
-                                    <v-btn depressed class="success white--text" @click="GoUpdatePage('/username-update')">編集</v-btn>
+                                    <Button @click="GoUpdatePage('/username-update')">編集</Button>
                                 </v-list-item-action>
                             </v-list-item>
                             <v-divider></v-divider>
@@ -33,7 +33,7 @@
                                     <v-list-item-subtitle>password</v-list-item-subtitle>
                                 </v-list-item-content>
                                 <v-list-item-action>
-                                    <v-btn depressed class="success white--text" @click="GoUpdatePage('/password-update')">編集</v-btn>
+                                    <Button @click="GoUpdatePage('/password-update')">編集</Button>
                                 </v-list-item-action>
                             </v-list-item>
                         </v-list>
@@ -44,8 +44,11 @@
     </v-container>
 </template>
 <script>
-
+import Button from '@/components/atoms/Button';
 export default {
+    components: {
+        Button
+    },
     data() {
         return {
             preUser: {

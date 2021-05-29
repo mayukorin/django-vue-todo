@@ -72,6 +72,27 @@ const authModule = {
           return context.dispatch("renew");
         });
       })
+    },
+    userNameUpdate(context, payload) {
+      return api({
+          method: "patch",
+          url: "user/profile/update/",
+          data: {
+              username: payload.username,
+              confirm_password: payload.check_password
+          }
+        }).then(response => {
+          const password = payload.check_password;
+          context.dispatch("auth/logout");
+          this.$store.dispatch(
+            "auth/login", {
+                email: response.data.email,
+                password: password
+            }
+          ).then(() => {
+              console.log("Username Update succeeded.");
+          });
+        })
     }
   },
 };

@@ -5,10 +5,13 @@ import store from "@/store";
 //import LoginPage from "@/views/LoginPage.vue";
 import TaskCreatePage from "@/views/TaskCreatePage.vue";
 import TaskEditPage from "@/views/TaskEditPage.vue";
-import UserEditPage from "@/views/UserEditPage.vue";
+//import UserEditPage from "@/views/UserEditPage.vue";
+import UserProfile from "@/components/templates/UserProfileView.vue";
 import PasswordUpdatePage from "@/views/PasswordUpdatePage.vue";
-import UsernameUpdatePage from "@/views/UsernameUpdatePage.vue";
-import EmailUpdatePage from "@/views/EmailUpdatePage.vue";
+//import UsernameUpdatePage from "@/views/UsernameUpdatePage.vue";
+import UserNameUpdate from "@/components/templates/UserNameUpdateView.vue";
+//import EmailUpdatePage from "@/views/EmailUpdatePage.vue";
+import EmailUpdate from "@/components/templates/EmailUpdateView.vue";
 import Login from "@/components/templates/LoginView";
 import Home from "@/components/templates/HomeView";
 import UserCreate from "@/components/templates/UserCreateView";
@@ -31,9 +34,9 @@ const routes = [
     name: "UserCreate",
     component: UserCreate,
   },{
-    path: "/user-edit",
-    name: "UserEdit",
-    component: UserEditPage,
+    path: "/user-profile",
+    name: "UserProfile",
+    component: UserProfile,
     meta: { requiresAuth: true },
   },{
     path: "/password-update",
@@ -42,13 +45,13 @@ const routes = [
     meta: { requiresAuth: true },
   },{
     path: "/email-update",
-    name: "EmailUpdatePage",
-    component: EmailUpdatePage,
+    name: "EmailUpdate",
+    component: EmailUpdate,
     meta: { requiresAuth: true },
   },{
     path: "/username-update",
-    name: "UsernameUpdatePage",
-    component: UsernameUpdatePage,
+    name: "UsernameUpdate",
+    component: UserNameUpdate,
     meta: { requiresAuth: true },
   },
   {
