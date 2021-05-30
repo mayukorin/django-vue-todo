@@ -7,7 +7,8 @@ import TaskCreatePage from "@/views/TaskCreatePage.vue";
 import TaskEditPage from "@/views/TaskEditPage.vue";
 //import UserEditPage from "@/views/UserEditPage.vue";
 import UserProfile from "@/components/templates/UserProfileView.vue";
-import PasswordUpdatePage from "@/views/PasswordUpdatePage.vue";
+//import PasswordUpdatePage from "@/views/PasswordUpdatePage.vue";
+import PasswordUpdate from "@/components/templates/PasswordUpdateView.vue";
 //import UsernameUpdatePage from "@/views/UsernameUpdatePage.vue";
 import UserNameUpdate from "@/components/templates/UserNameUpdateView.vue";
 //import EmailUpdatePage from "@/views/EmailUpdatePage.vue";
@@ -40,8 +41,8 @@ const routes = [
     meta: { requiresAuth: true },
   },{
     path: "/password-update",
-    name: "PasswordUpdatePage",
-    component: PasswordUpdatePage,
+    name: "PasswordUpdate",
+    component: PasswordUpdate,
     meta: { requiresAuth: true },
   },{
     path: "/email-update",

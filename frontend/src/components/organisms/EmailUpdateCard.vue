@@ -4,7 +4,7 @@
             <span class="headline">Email Update Page</span>
         </v-card-title>
         <v-card-text>
-            <EmailUpdateForm :email="getEmailInfo" @onUpdate="handleUpdate" />
+            <EmailUpdateForm :email="getEmailInfo" :onUpdate="handleUpdate" />
         </v-card-text>
     </v-card>
 </template>
@@ -15,8 +15,11 @@ export default {
         EmailUpdateForm
     },
     methods: {
-        handleUpdate() {
-            console.log("ok");
+        handleUpdate(userInfo) {
+            return this.$store.dispatch('auth/emailUpdate', userInfo)
+                .then(() => {
+                    this.$router.replace("/user-profile");
+                });
         }
     },
     computed: {

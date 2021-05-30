@@ -17,15 +17,14 @@ export default {
     methods: {
         handleUpdate(userInfo) {
             return this.$store.dispatch('auth/userNameUpdate', userInfo)
+                .then(() => {
+                    this.$router.replace("/user-profile");
+                });
         }
     },
     computed: {
         getUserNameInfo() {
-            console.log(this.$store.state.auth.username);
             return this.$store.state.auth.username
-                .then(() => {
-                    this.$router.replace("/user-profile");
-                })
         }
     }
 

@@ -28,6 +28,7 @@ const authModule = {
       console.log("aaaa");
       console.log(payload.email);
       console.log(payload.password);
+      console.log("ここから行かない?");
       return api
         .post("/auth/jwt/create/", {
           email: payload.email,
@@ -61,38 +62,65 @@ const authModule = {
           password: payload.password
         }
       }).then((response) => {
-        //ログイン
-        return api
-        .post("/auth/jwt/create/", {
-          email: response.data.email,
-          password: payload.password,
-        })
-        .then((response) => {
-          localStorage.setItem("access", response.data.access);
-          return context.dispatch("renew");
-        });
+        return context.dispatch("login", {email: response.data.email, password: payload.password})
       })
     },
     userNameUpdate(context, payload) {
+      console.log("What...")
+      console.log(payload);
       return api({
           method: "patch",
           url: "user/profile/update/",
           data: {
               username: payload.username,
-              confirm_password: payload.check_password
+              confirm_password: payload.confirm_password
           }
         }).then(response => {
-          const password = payload.check_password;
-          context.dispatch("auth/logout");
-          this.$store.dispatch(
-            "auth/login", {
-                email: response.data.email,
-                password: password
-            }
-          ).then(() => {
-              console.log("Username Update succeeded.");
+          const password = payload.confirm_password;
+          context.dispatch("logout");
+          return context.dispatch("login", {email: response.data.email, password: password});
+          /*
+          //ログイン
+          return api
+          .post("/auth/jwt/create/", {
+            email: response.data.email,
+            password: password,
+          })
+          .then((response) => {
+            localStorage.setItem("access", response.data.access);
+            return context.dispatch("renew");
           });
+          */
         })
+    },
+    emailUpdate(context, payload) {
+      return api({
+        method: "patch",
+        url: "user/profile/update/",
+        data: {
+          email: payload.email,
+          confirm_password: payload.confirm_password
+        }
+      }).then(response => {
+        const password = payload.confirm_password;
+        context.dispatch("logout");
+        return context.dispatch("login", {email: response.data.email, password: password});
+      })
+    },
+    passwordUpdate(context, payload) {
+      return api({
+        method: "patch",
+        url: "/password/update/",
+        data: {
+            confirm_password: payload.confirm_password,
+            password: payload.new_password
+        }
+      }).then(response => {
+        const password = payload.new_password;
+        const email = response.data.email;
+        context.dispatch("logout");
+        return context.dispatch("login", {email: email, password: password});
+      })
     }
   },
 };
