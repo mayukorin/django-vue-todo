@@ -141,6 +141,7 @@ const messageModule = {
       if (payload.error) {
         state.error = payload.error;
         state.color = "error";
+        console.log("critical hit")
       }
       if (payload.warnings) {
         state.warnings = payload.warnings;

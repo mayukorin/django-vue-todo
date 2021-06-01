@@ -21,7 +21,7 @@ export default {
       return this.$store.dispatch('auth/signin', userInfo)
         .then(() => {
           console.log("signin and login succeeded.");
-          //this.$router.replace("/login");//ログイン画面へ
+          
           this.$store.dispatch("message/setKeepInfoMessage", {
             message: "ユーザ登録が完了し，ログインしました．"
           });
