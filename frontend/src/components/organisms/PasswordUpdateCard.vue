@@ -18,6 +18,9 @@ export default {
         handleUpdate(userInfo) {
             return this.$store.dispatch('auth/passwordUpdate', userInfo)
                 .then(() => {
+                    this.$store.dispatch("message/setInfoMessage", {
+                        message: "パスワードを変更しました．"
+                    });
                     this.$router.replace("/user-profile");
                 });
         }

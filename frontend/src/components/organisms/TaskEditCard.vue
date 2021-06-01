@@ -28,11 +28,9 @@ export default {
         .then(() => {
           console.log("Task Update succeeded.");
           this.$emit('dialog-false')
-          /*
-          this.$store.dispatch("message/setKeepInfoMessage", {
-            message: "ログインしました．"
+          this.$store.dispatch("message/setInfoMessage", {
+            message: "タスクを編集しました．"
           });
-          */
         });
     },
   },

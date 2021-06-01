@@ -1,6 +1,6 @@
 <template>
-    <v-snackbar v-model="snac" timeout="4000" top :color="isShow.color" >
-        <SnackBarMessage @close="closeSnackBar()" :message="getMessage()"/>
+    <v-snackbar v-model="snac" timeout="4000" top color="success" >
+        <SnackBarMessage @close="closeSnackBar()" :message="getMessage"/>
     </v-snackbar>
 </template>
 <script>
@@ -16,11 +16,16 @@ export default {
         closeSnackBar() {
             this.snac = false;
         },
+        openSnackBar() {
+            this.snac = true;
+        }
         
     },
     computed: {
         getMessage() {
-            if (this.$store.state.message.info != "") this.snac = true;
+            if (this.$store.state.message.info != "") {
+                this.openSnackBar();
+            }
             return this.$store.state.message;
         }
     }

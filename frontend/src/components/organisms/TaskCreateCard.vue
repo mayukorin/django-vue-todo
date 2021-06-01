@@ -21,7 +21,10 @@ export default {
       return this.$store.dispatch('task/addTask', taskInfo)
         .then(() => {
           console.log("Task Create succeeded.");
-          this.$emit('dialog-false')
+          this.$emit('dialog-false');
+          this.$store.dispatch("message/setInfoMessage", {
+            message: "新しいタスクを登録しました．"
+          });
           /*
           this.$store.dispatch("message/setKeepInfoMessage", {
             message: "ログインしました．"

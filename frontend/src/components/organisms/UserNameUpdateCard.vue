@@ -18,6 +18,9 @@ export default {
         handleUpdate(userInfo) {
             return this.$store.dispatch('auth/userNameUpdate', userInfo)
                 .then(() => {
+                    this.$store.dispatch("message/setInfoMessage", {
+                        message: "ユーザ名を変更しました．"
+                    });
                     this.$router.replace("/user-profile");
                 });
         }
