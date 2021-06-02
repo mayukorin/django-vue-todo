@@ -52,7 +52,7 @@ const authModule = {
         context.commit("set", { user: user });
       });
     },
-    signin(context, payload) {
+    signup(context, payload) {
       return api({
         method: "post",
         url: "/user/create/",
@@ -62,6 +62,7 @@ const authModule = {
           password: payload.password
         }
       }).then((response) => {
+        console.log(response.data);
         return context.dispatch("login", {email: response.data.email, password: payload.password})
       })
     },
@@ -141,7 +142,6 @@ const messageModule = {
       if (payload.error) {
         state.error = payload.error;
         state.color = "error";
-        console.log("critical hit")
       }
       if (payload.warnings) {
         state.warnings = payload.warnings;

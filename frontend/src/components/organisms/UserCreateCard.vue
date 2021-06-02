@@ -18,7 +18,7 @@ export default {
   },
   methods: {
     handleSignin(userInfo) {
-      return this.$store.dispatch('auth/signin', userInfo)
+      return this.$store.dispatch('auth/signup', userInfo)
         .then(() => {
           console.log("signin and login succeeded.");
           
