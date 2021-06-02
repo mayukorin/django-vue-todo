@@ -25,6 +25,10 @@ const authModule = {
   },
   actions: {
     login(context, payload) {
+      console.log("aaaa");
+      console.log(payload.email);
+      console.log(payload.password);
+      console.log("ここから行かない?");
       return api
         .post("/auth/jwt/create/", {
           email: payload.email,
@@ -48,6 +52,76 @@ const authModule = {
         context.commit("set", { user: user });
       });
     },
+    signin(context, payload) {
+      return api({
+        method: "post",
+        url: "/user/create/",
+        data: {
+          email: payload.email,
+          username: payload.username,
+          password: payload.password
+        }
+      }).then((response) => {
+        return context.dispatch("login", {email: response.data.email, password: payload.password})
+      })
+    },
+    userNameUpdate(context, payload) {
+      console.log("What...")
+      console.log(payload);
+      return api({
+          method: "patch",
+          url: "user/profile/update/",
+          data: {
+              username: payload.username,
+              confirm_password: payload.confirm_password
+          }
+        }).then(response => {
+          const password = payload.confirm_password;
+          context.dispatch("logout");
+          return context.dispatch("login", {email: response.data.email, password: password});
+          /*
+          //ログイン
+          return api
+          .post("/auth/jwt/create/", {
+            email: response.data.email,
+            password: password,
+          })
+          .then((response) => {
+            localStorage.setItem("access", response.data.access);
+            return context.dispatch("renew");
+          });
+          */
+        })
+    },
+    emailUpdate(context, payload) {
+      return api({
+        method: "patch",
+        url: "user/profile/update/",
+        data: {
+          email: payload.email,
+          confirm_password: payload.confirm_password
+        }
+      }).then(response => {
+        const password = payload.confirm_password;
+        context.dispatch("logout");
+        return context.dispatch("login", {email: response.data.email, password: password});
+      })
+    },
+    passwordUpdate(context, payload) {
+      return api({
+        method: "patch",
+        url: "/password/update/",
+        data: {
+            confirm_password: payload.confirm_password,
+            password: payload.new_password
+        }
+      }).then(response => {
+        const password = payload.new_password;
+        const email = response.data.email;
+        context.dispatch("logout");
+        return context.dispatch("login", {email: email, password: password});
+      })
+    }
   },
 };
 
@@ -67,6 +141,7 @@ const messageModule = {
       if (payload.error) {
         state.error = payload.error;
         state.color = "error";
+        console.log("critical hit")
       }
       if (payload.warnings) {
         state.warnings = payload.warnings;
@@ -167,20 +242,81 @@ const taskModule = {
     },
     set_update_false(state) {
       state.update_flag = false;
+    },
+    fetchTaskList(state, payload) {
+      state.tasks = payload.taskList;
+    },
+    AddTask(state, payload) {
+      state.tasks.push(payload);
+    },
+    UpdateTask(state, payload) {
+      const task = state.tasks.find(task => task.pk === payload.pk);
+      task.title = payload.title;
+      task.content = payload.content;
+      task.deadline = payload.deadline;
+    },
+    DeleteTask(state, payload) {
+      const task = state.tasks.find(task => task.pk === payload.pk);
+      state.tasks.splice(state.tasks.indexOf(task), 1)
     }
   },
   actions: {
     setTasks(context, payload) {
       context.commit("set", payload);
     },
+    /*
     addTask(context, payload) {
       context.commit("addTask", payload);
     },
+    */
     setUpdateFlagTrue(context) {
       context.commit("set_update_true");
     },
     setUpdateFlagFalse(context) {
       context.commit("set_update_false");
+    },
+    fetchList(context) {
+      return api.get("/task/list/").then((response) => {
+        console.log(response.data);
+        context.commit("fetchTaskList", { taskList: response.data });
+      });
+    },
+    addTask(context, payload) {
+      return api({
+        method: "post",
+        url: "/task/create/",
+        data: {
+            title: payload.title,
+            content: payload.content,
+            deadline: payload.deadline,
+        }
+      }).then((response) => {
+        console.log(response.data);
+        context.commit("AddTask", response.data);
+      })
+    },
+    updateTask(context, payload) {
+      return api({
+        method: "patch",
+        url: `/task/update/${payload.pk}/`,
+        data: {
+          title: payload.title,
+          content: payload.content,
+          deadlie: payload.deadline
+        }
+      }).then((response) => {
+        console.log(response.data);
+        context.commit("UpdateTask", response.data);
+      })
+    },
+    deleteTask(context, payload) {
+      return api({
+        method: "delete",
+        url: `task/delete/${payload.pk}/`,
+      }).then((response) => {
+        console.log(response);
+        context.commit("DeleteTask", payload);
+      })
     }
   }
 }
@@ -189,7 +325,7 @@ const store = new Vuex.Store({
   modules: {
     auth: authModule,
     message: messageModule,
-    tasks: taskModule,
+    task: taskModule,
   },
 });
 

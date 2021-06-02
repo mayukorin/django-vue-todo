@@ -1,15 +1,21 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import store from "@/store";
-import Home from "@/views/Home.vue";
-import LoginPage from "@/views/LoginPage.vue";
+//import Home from "@/views/Home.vue";
+//import LoginPage from "@/views/LoginPage.vue";
 import TaskCreatePage from "@/views/TaskCreatePage.vue";
 import TaskEditPage from "@/views/TaskEditPage.vue";
-import UserCreatePage from "@/views/UserCreatePage.vue";
-import UserEditPage from "@/views/UserEditPage.vue";
-import PasswordUpdatePage from "@/views/PasswordUpdatePage.vue";
-import UsernameUpdatePage from "@/views/UsernameUpdatePage.vue";
-import EmailUpdatePage from "@/views/EmailUpdatePage.vue";
+//import UserEditPage from "@/views/UserEditPage.vue";
+import UserProfile from "@/components/templates/UserProfileView.vue";
+//import PasswordUpdatePage from "@/views/PasswordUpdatePage.vue";
+import PasswordUpdate from "@/components/templates/PasswordUpdateView.vue";
+//import UsernameUpdatePage from "@/views/UsernameUpdatePage.vue";
+import UserNameUpdate from "@/components/templates/UserNameUpdateView.vue";
+//import EmailUpdatePage from "@/views/EmailUpdatePage.vue";
+import EmailUpdate from "@/components/templates/EmailUpdateView.vue";
+import Login from "@/components/templates/LoginView";
+import Home from "@/components/templates/HomeView";
+import UserCreate from "@/components/templates/UserCreateView";
 
 Vue.use(VueRouter);
 
@@ -23,30 +29,30 @@ const routes = [
   {
     path: "/login",
     name: "Login",
-    component: LoginPage,
+    component: Login,
   },{
     path: "/user-create",
     name: "UserCreate",
-    component: UserCreatePage,
+    component: UserCreate,
   },{
-    path: "/user-edit",
-    name: "UserEdit",
-    component: UserEditPage,
+    path: "/user-profile",
+    name: "UserProfile",
+    component: UserProfile,
     meta: { requiresAuth: true },
   },{
     path: "/password-update",
-    name: "PasswordUpdatePage",
-    component: PasswordUpdatePage,
+    name: "PasswordUpdate",
+    component: PasswordUpdate,
     meta: { requiresAuth: true },
   },{
     path: "/email-update",
-    name: "EmailUpdatePage",
-    component: EmailUpdatePage,
+    name: "EmailUpdate",
+    component: EmailUpdate,
     meta: { requiresAuth: true },
   },{
     path: "/username-update",
-    name: "UsernameUpdatePage",
-    component: UsernameUpdatePage,
+    name: "UsernameUpdate",
+    component: UserNameUpdate,
     meta: { requiresAuth: true },
   },
   {

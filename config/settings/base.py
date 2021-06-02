@@ -14,8 +14,7 @@ import os
 from datetime import timedelta
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
@@ -43,6 +42,7 @@ INSTALLED_APPS = [
     'djoser',
     'corsheaders',
     'todo_app.apps.TodoAppConfig',
+    "django_nose",
 ]
 
 MIDDLEWARE = [
@@ -79,17 +79,6 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': 'db',
-        'PORT': 5432,
-    }
-}
 
 
 # Password validation
@@ -144,11 +133,4 @@ SIMPLE_JWT = {
 
 # AUTH_MODEL
 AUTH_USER_MODEL = 'todo_app.User'
-
-# CORS
-CORS_ALLOW_ALL_ORIGINS = False
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:8080',
-    'http://127.0.0.1:8080',
-]
 

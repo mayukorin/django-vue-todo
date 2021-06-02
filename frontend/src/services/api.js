@@ -47,12 +47,10 @@ api.interceptors.response.use(
       message = "権限がありません．";
       store.dispatch("message/setErrorMessage", { message: message });
     } else if (status === 401) {
-      console.log("12");
       const token = localStorage.getItem("access");
       if (token != null) {
         message = "ログインの有効期限切れです．";
       } else {
-        console.log("34");
         message = "パスワードかメールアドレスが間違っています．";
       }
       store.dispatch("auth/logout");

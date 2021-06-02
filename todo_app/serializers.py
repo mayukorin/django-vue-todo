@@ -29,10 +29,7 @@ class UserSerializer(serializers.ModelSerializer):
         if confirm_password is None:
             return data
         previous_password = self.instance.password
-        print(confirm_password)
-        print(previous_password)
         if check_password(confirm_password, previous_password) is False:
-            print("aaaaaaaa")
             raise serializers.ValidationError("現在のパスワードが間違っています")
         return data
 
@@ -40,7 +37,6 @@ class UserSerializer(serializers.ModelSerializer):
 class TaskSerializer(serializers.ModelSerializer):
     user = UserSerializer(read_only=True)
     user_id = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), write_only=True)
-    # deadline = serializers.DateField(format='%Y/%m/%d', input_formats=['%Y/%m/%d', 'iso-8601'])
     class Meta:
         model = Task
         fields = ['pk', 'title', 'content', 'deadline', 'user', 'user_id']
