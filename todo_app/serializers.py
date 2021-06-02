@@ -37,7 +37,6 @@ class UserSerializer(serializers.ModelSerializer):
 class TaskSerializer(serializers.ModelSerializer):
     user = UserSerializer(read_only=True)
     user_id = serializers.PrimaryKeyRelatedField(queryset=User.objects.all(), write_only=True)
-    # deadline = serializers.DateField(format='%Y/%m/%d', input_formats=['%Y/%m/%d', 'iso-8601'])
     class Meta:
         model = Task
         fields = ['pk', 'title', 'content', 'deadline', 'user', 'user_id']
@@ -46,7 +45,6 @@ class TaskSerializer(serializers.ModelSerializer):
         validated_data['user'] = validated_data.get('user_id', None)
 
         if validated_data['user'] is None:
-            print("ww")
             raise serializers.ValidationError("User not found.")
 
         del validated_data['user_id']

@@ -5,8 +5,35 @@
             <span class="font-weight-light">Todo</span>
         </v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-btn v-if="true" text color="grey" @click="Logout">
-            <span>Sign Out</span>
+        <v-menu offset-y>
+            <template v-slot:activator="{ on, attrs }">
+                <v-btn text v-bind="attrs" v-on="on" color="grey">
+                    <v-icon left>mdi-chevron-down</v-icon>
+                    <span>Menu</span>
+                </v-btn>
+            </template>
+            <v-list v-if="isLoggedIn">
+                <v-list-item router to="/">
+                    <v-list-item-content>
+                        <v-list-item-title>Task List</v-list-item-title>
+                    </v-list-item-content>
+                </v-list-item>
+                <v-list-item router to="/user-profile">
+                    <v-list-item-content>
+                        <v-list-item-title>Account Profile</v-list-item-title>
+                    </v-list-item-content>
+                </v-list-item>
+            </v-list>
+            <v-list v-else>
+                <v-list-item router to="/user-create">
+                    <v-list-item-content>
+                        <v-list-item-title>Account Create</v-list-item-title>
+                    </v-list-item-content>
+                </v-list-item>
+            </v-list>
+        </v-menu>
+        <v-btn v-if="isLoggedIn" text color="grey" @click="Logout">
+            <span>Sign out</span>
             <v-icon right>mdi-exit-to-app</v-icon>
         </v-btn>
         <v-btn v-else text color="grey" @click="Login">
@@ -19,14 +46,23 @@
 export default {
     methods: {
         Logout() {
-            console.log("logout");
+            this.$store.dispatch('auth/logout');
+            this.$store.dispatch('message/setInfoMessage', {
+                message: 'ログアウトしました．'
+            });
+            this.$router.replace('/login');
         },
         Login() {
-            console.log("login");
+            this.$router.replace('/login');
         },
         handleDrawer() {
             this.$emit('handleDrawer');
         }
     },
+    computed: {
+        isLoggedIn() {
+            return this.$store.state.auth.isLoggedIn;
+        }
+    }
 };
 </script>
