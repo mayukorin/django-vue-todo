@@ -41,6 +41,9 @@ export default {
           return this.$store.dispatch('task/deleteTask', this.task)
                 .then(() => {
                     console.log("Task Delete succeeded.");
+                    this.$store.dispatch('message/setInfoMessage', {
+                        message: 'タスクを1件削除しました'
+                    });
                 });
 
       }

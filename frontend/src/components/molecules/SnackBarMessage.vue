@@ -1,8 +1,14 @@
 <template>
     <div>
         <div v-if="message.info">
-            <span>{{ message.info }}</span>
-            <v-btn text color="white" @click="close">Close</v-btn>
+            <v-row class="ma-0">
+                <v-col cols="8">
+                    {{ message.info }}
+                </v-col>
+                <v-col cols="4">
+                    <v-btn text color="white" @click="close">Close</v-btn>
+                </v-col>
+            </v-row>
         </div>
         <div v-if="message.error">
             <span>{{ message.error }}</span>

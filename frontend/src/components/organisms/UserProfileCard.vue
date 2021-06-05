@@ -1,11 +1,6 @@
 <template>
     <v-card>
-        <v-card-title>
-            <span class="headline">User Profile Page</span>
-        </v-card-title>
-        <v-card-text>
-            <UserProfileList :UserInfo="GetUserInfo"/>
-        </v-card-text>
+        <UserProfileList :UserInfo="GetUserInfo"/>
     </v-card>
 </template>
 <script>
