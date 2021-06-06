@@ -20,7 +20,7 @@
             <div class="black--text">{{ User.username }}</div>
         </v-col>
         <v-col cols="4" md="2">
-            <v-btn depressed class="success white--text" @click="GoUpdatePage('/email-update')">編集</v-btn>
+            <v-btn depressed class="success white--text" @click="GoUpdatePage('/username-update')">編集</v-btn>
         </v-col>
     </v-row>
     <v-divider></v-divider>
