@@ -16,7 +16,8 @@
                 </v-row>
             </v-expansion-panel-header>
             <v-expansion-panel-content class="px-4 grey--text">
-                <div class="foot-weight-bold">do by {{ task.deadline }}</div>
+                <div v-if="task.deadline" class="foot-weight-bold">do by {{ task.deadline }}</div>
+                <div v-else class="foot-weight-bold">no deadline</div>
                 <div>{{ task.content }}</div>
         </v-expansion-panel-content>
     </v-expansion-panel>
@@ -40,6 +41,9 @@ export default {
           return this.$store.dispatch('task/deleteTask', this.task)
                 .then(() => {
                     console.log("Task Delete succeeded.");
+                    this.$store.dispatch('message/setInfoMessage', {
+                        message: 'タスクを1件削除しました'
+                    });
                 });
 
       }

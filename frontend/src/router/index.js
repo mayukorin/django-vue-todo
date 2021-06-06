@@ -1,18 +1,12 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import store from "@/store";
-//import Home from "@/views/Home.vue";
-//import LoginPage from "@/views/LoginPage.vue";
-import TaskCreatePage from "@/views/TaskCreatePage.vue";
-import TaskEditPage from "@/views/TaskEditPage.vue";
-//import UserEditPage from "@/views/UserEditPage.vue";
-import UserProfile from "@/components/templates/UserProfileView.vue";
-//import PasswordUpdatePage from "@/views/PasswordUpdatePage.vue";
-import PasswordUpdate from "@/components/templates/PasswordUpdateView.vue";
-//import UsernameUpdatePage from "@/views/UsernameUpdatePage.vue";
-import UserNameUpdate from "@/components/templates/UserNameUpdateView.vue";
-//import EmailUpdatePage from "@/views/EmailUpdatePage.vue";
-import EmailUpdate from "@/components/templates/EmailUpdateView.vue";
+//import TaskCreatePage from "@/views/TaskCreatePage";
+//import TaskEditPage from "@/views/TaskEditPage";
+import UserProfile from "@/components/templates/UserProfileView";
+import PasswordUpdate from "@/components/templates/PasswordUpdateView";
+import UserNameUpdate from "@/components/templates/UserNameUpdateView";
+import EmailUpdate from "@/components/templates/EmailUpdateView";
 import Login from "@/components/templates/LoginView";
 import Home from "@/components/templates/HomeView";
 import UserCreate from "@/components/templates/UserCreateView";
@@ -55,6 +49,7 @@ const routes = [
     component: UserNameUpdate,
     meta: { requiresAuth: true },
   },
+  /*
   {
     path: "/task-create",
     name:  "TaskCreate",
@@ -67,6 +62,7 @@ const routes = [
     component: TaskEditPage,
     meta: { requiresAuth: true},
   }
+  */
 ];
 
 const router = new VueRouter({
@@ -79,7 +75,6 @@ router.beforeEach((to, from, next) => {
   const token = localStorage.getItem("access");
   console.log("to.path=", to.path);
   console.log("isLoggedIn=", isLoggedIn);
-  console.log(store.state.message.is_show);
 
   if (to.matched.some((record) => record.meta.requiresAuth)) {
     if (!isLoggedIn) {
@@ -89,7 +84,6 @@ router.beforeEach((to, from, next) => {
         store
           .dispatch("auth/renew")
           .then(() => {
-            console.log("aaannn");
             console.log("Succeeded to renew. So, free to next.");
             next();
           })

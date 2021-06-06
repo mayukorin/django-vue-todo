@@ -2,9 +2,10 @@
     <v-dialog max-width="600px" v-model="dialog">
         <template v-slot:activator="{ on, attrs }">
             <v-btn
-                class="mx-2"
+                class="ma-2"
                 fab
                 dark
+                text
                 color="success"
                 v-bind="attrs"
                 v-on="on"

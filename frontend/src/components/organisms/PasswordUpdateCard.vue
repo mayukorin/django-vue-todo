@@ -1,7 +1,7 @@
 <template>
      <v-card>
         <v-card-title>
-            <span class="headline">Password Update Page</span>
+            <span class="headline">パスワードの変更</span>
         </v-card-title>
         <v-card-text>
             <PasswordUpdateForm :onUpdate="handleUpdate" />

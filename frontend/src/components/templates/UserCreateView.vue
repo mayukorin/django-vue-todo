@@ -2,7 +2,7 @@
   <div id="user-create-view">
     <v-container class="my-5">
       <v-row justify="center">
-        <v-col cols="8">
+        <v-col cols="12" md="8">
           <UserCreateCard />
         </v-col>
       </v-row>

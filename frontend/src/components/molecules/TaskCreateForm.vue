@@ -52,7 +52,8 @@ export default {
         form: {
             title: '',
             content: '',
-            deadline: format(parseISO(new Date().toISOString()), 'yyyy-MM-dd'),
+            //deadline: format(parseISO(new Date().toISOString()), 'yyyy-MM-dd'),
+            deadline: null,
         },
         valid:true,
         rules: {

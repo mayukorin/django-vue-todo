@@ -1,6 +1,6 @@
 <template>
   <div id="home-view">
-    <v-subheader class="grey--text">Tasks</v-subheader>
+    <h1 class="subtitle-1 grey--text">Tasks</h1>
     <v-container class="my-5">
         <TaskCreatePopupPlusButton />
         <TaskListPanels />
