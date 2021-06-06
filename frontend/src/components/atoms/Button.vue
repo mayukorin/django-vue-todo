@@ -9,7 +9,6 @@ export default {
   name: "Button",
   methods: {
     handleClick() {
-      // `click` イベントを発行
       this.$emit("click");
     },
   },

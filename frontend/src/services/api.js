@@ -58,7 +58,6 @@ api.interceptors.response.use(
       message = "想定外のエラーです．";
       store.dispatch("message/setErrorMessage", { message: message });
     }
-    store.dispatch("message/setIsShowTrue");
     return Promise.reject(error);
   }
 );

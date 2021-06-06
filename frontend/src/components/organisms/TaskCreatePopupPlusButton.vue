@@ -1,31 +1,34 @@
 <template>
     <v-dialog max-width="600px" v-model="dialog">
-        <template v-slot:activator="{ on, attrs }">
-            <v-btn
-                class="ma-2"
-                fab
-                dark
-                text
-                color="success"
-                v-bind="attrs"
-                v-on="on"
-            >
-                <v-icon dark>
-                    mdi-plus
-                </v-icon>
-            </v-btn>
+        <template v-slot:activator="{ on: popup, attrs }">
+            <v-tooltip top>
+                <template v-slot:activator="{ on: tooltip }" >
+                    <v-btn
+                        class="ma-2"
+                        fab
+                        dark
+                        text
+                        color="success"
+                        v-bind="attrs"
+                        v-on="{ ...tooltip, ...popup }"
+                    >
+                        <v-icon dark>
+                            mdi-plus
+                        </v-icon>
+                    </v-btn>
+                </template>
+                <span>タスク新規作成</span>
+            </v-tooltip>
         </template>
         <TaskCreateCard @dialog-false="dialogFalse" />
     </v-dialog>
 </template>
 <script>
 import TaskCreateCard from '@/components/organisms/TaskCreateCard';
-//import addTaskPopupButton from '@/components/atoms/addTaskPopupButton';
 export default {
-    name: 'TaskCreatePopup',
+    name: 'TaskCreatePopupPlusButton',
     components: {
         TaskCreateCard,
-        //addTaskPopupButton
     },
     data: () => ({
         dialog: false,
