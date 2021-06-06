@@ -25,17 +25,12 @@ const authModule = {
   },
   actions: {
     login(context, payload) {
-      console.log("aaaa");
-      console.log(payload.email);
-      console.log(payload.password);
-      console.log("ここから行かない?");
       return api
         .post("/auth/jwt/create/", {
           email: payload.email,
           password: payload.password,
         })
         .then((response) => {
-          console.log(response.data.access);
           localStorage.setItem("access", response.data.access);
           return context.dispatch("renew");
         });
@@ -47,8 +42,6 @@ const authModule = {
     renew(context) {
       return api.get("/auth/users/me/").then((response) => {
         const user = response.data;
-        console.log("data");
-        console.log(user);
         context.commit("set", { user: user });
       });
     },
@@ -62,13 +55,11 @@ const authModule = {
           password: payload.password
         }
       }).then((response) => {
-        console.log(response.data);
         return context.dispatch("login", {email: response.data.email, password: payload.password})
       })
     },
     userNameUpdate(context, payload) {
-      console.log("What...")
-      console.log(payload);
+      
       return api({
           method: "patch",
           url: "user/profile/update/",
@@ -80,18 +71,6 @@ const authModule = {
           const password = payload.confirm_password;
           context.dispatch("logout");
           return context.dispatch("login", {email: response.data.email, password: password});
-          /*
-          //ログイン
-          return api
-          .post("/auth/jwt/create/", {
-            email: response.data.email,
-            password: password,
-          })
-          .then((response) => {
-            localStorage.setItem("access", response.data.access);
-            return context.dispatch("renew");
-          });
-          */
         })
     },
     emailUpdate(context, payload) {
@@ -171,7 +150,6 @@ const messageModule = {
       state.is_show = false;
     },
     set_show_flag_true(state) {
-      console.log("why");
       state.show_flag = true;
     },
     set_show_flag_false(state) {

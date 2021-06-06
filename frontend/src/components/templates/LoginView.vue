@@ -2,7 +2,7 @@
   <div id="login-view">
     <v-container class="my-5">
       <v-row justify="center">
-        <v-col cols="8">
+        <v-col cols="12" md="8">
           <LoginCard />
         </v-col>
       </v-row>
