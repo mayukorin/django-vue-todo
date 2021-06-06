@@ -10,9 +10,9 @@
 </template>
 
 <script>
-import LoginForm from "@/components/molecules/LoginForm";
+import LoginForm from '@/components/molecules/LoginForm';
 export default {
-  name: "LoginCard",
+  name: 'LoginCard',
   components: {
     LoginForm,
   },
@@ -20,11 +20,11 @@ export default {
     handleLogin(authInfo) {
       return this.$store.dispatch('auth/login', authInfo)
         .then(() => {
-          console.log("Login succeeded.");
-          this.$store.dispatch("message/setKeepInfoMessage", {
-            message: "ログインしました．"
+          console.log('Login succeeded.');
+          this.$store.dispatch('message/setKeepInfoMessage', {
+            message: 'ログインしました．'
           });
-          const next = this.$route.query.next || "/";
+          const next = this.$route.query.next || '/';
           this.$router.replace(next);
         });
     },

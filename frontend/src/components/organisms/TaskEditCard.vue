@@ -4,7 +4,7 @@
       <span class="headline">task-update</span>
     </v-card-title>
     <v-card-text>
-      <TaskEditForm :onUpdate="handleUpdate" :task="task"/>
+      <TaskEditForm :on-update="handleUpdate" :task="task"/>
     </v-card-text>
   </v-card>
 </template>
@@ -26,10 +26,10 @@ export default {
     handleUpdate(taskInfo) {
       return this.$store.dispatch('task/updateTask', taskInfo)
         .then(() => {
-          console.log("Task Update succeeded.");
-          this.$emit('dialog-false')
-          this.$store.dispatch("message/setInfoMessage", {
-            message: "タスクを編集しました．"
+          console.log('Task Update succeeded.');
+          this.$emit('dialogFalse')
+          this.$store.dispatch('message/setInfoMessage', {
+            message: 'タスクを編集しました．'
           });
         });
     },

@@ -10,6 +10,7 @@
 <script>
 import UserNameUpdateCard from '@/components/organisms/UserNameUpdateCard';
 export default {
+    name: 'UserNameUpdateCard',
     components: {
         UserNameUpdateCard
     },

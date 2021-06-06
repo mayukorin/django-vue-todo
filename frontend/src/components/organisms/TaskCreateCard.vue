@@ -4,7 +4,7 @@
       <span class="headline">task-create</span>
     </v-card-title>
     <v-card-text>
-      <TaskCreateForm :onCreate="handleCreate" />
+      <TaskCreateForm :on-create="handleCreate" />
     </v-card-text>
   </v-card>
 </template>
@@ -20,16 +20,12 @@ export default {
     handleCreate(taskInfo) {
       return this.$store.dispatch('task/addTask', taskInfo)
         .then(() => {
-          console.log("Task Create succeeded.");
-          this.$emit('dialog-false');
-          this.$store.dispatch("message/setInfoMessage", {
-            message: "新しいタスクを登録しました．"
+          console.log('Task Create succeeded.');
+          this.$emit('dialogFalse');
+          this.$store.dispatch('message/setInfoMessage', {
+            message: '新しいタスクを登録しました．'
           });
-          /*
-          this.$store.dispatch("message/setKeepInfoMessage", {
-            message: "ログインしました．"
-          });
-          */
+    
         });
     },
   },

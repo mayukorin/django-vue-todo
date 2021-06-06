@@ -11,9 +11,9 @@
 </template>
 
 <script>
-import UserCreateCard from "@/components/organisms/UserCreateCard";
+import UserCreateCard from '@/components/organisms/UserCreateCard';
 export default {
-  name: "UserCreateView",
+  name: 'UserCreateView',
   components: {
     UserCreateCard,
   },

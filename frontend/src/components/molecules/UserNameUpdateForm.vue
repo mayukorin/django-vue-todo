@@ -11,7 +11,7 @@
         </v-text-field>
         <v-text-field 
             label="パスワード"
-            v-model="form.check_password"
+            v-model="form.checkPassword"
             :rules="rules.password"
             maxlength="20"
             prepend-icon="mdi-lock"
@@ -39,26 +39,28 @@ export default {
             required: true
         }
     },
-    data: () => ({
-        form: {
-            username: '',
-            check_password: ''
+    data ()  {
+        return {
+            form: {
+                username: '',
+                checkPassword: ''
 
-        },
-        valid:true,
-        rules: {
-            username: [
-                v => !!v || 'ユーザ名を入力してください',
-            ],
-            password: [
-                v => !!v || 'パスワードを入力してください'
-            ]
-        },
-    }),
+            },
+            valid:true,
+            rules: {
+                username: [
+                    v => !!v || 'ユーザ名を入力してください',
+                ],
+                password: [
+                    v => !!v || 'パスワードを入力してください'
+                ]
+            },
+        }
+    },
     methods: {
         handleClick() {
             if (!this.$refs.form.validate()) { return };
-            this.onUpdate({ username: this.form.username, confirm_password: this.form.check_password})
+            this.onUpdate({ username: this.form.username, confirm_password: this.form.checkPassword})
         }
     },
     created() {

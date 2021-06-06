@@ -9,8 +9,9 @@
     </v-card>
 </template>
 <script>
-import EmailUpdateForm from "@/components/molecules/EmailUpdateForm.vue";
+import EmailUpdateForm from '@/components/molecules/EmailUpdateForm';
 export default {
+    name: 'EmailUpdateCard',
     components: {
         EmailUpdateForm
     },
@@ -18,16 +19,15 @@ export default {
         handleUpdate(userInfo) {
             return this.$store.dispatch('auth/emailUpdate', userInfo)
                 .then(() => {
-                    this.$store.dispatch("message/setInfoMessage", {
-                        message: "メールアドレスを変更しました．"
+                    this.$store.dispatch('message/setInfoMessage', {
+                        message: 'メールアドレスを変更しました．'
                     });
-                    this.$router.replace("/user-profile");
+                    this.$router.replace('/user-profile');
                 });
         }
     },
     computed: {
         getEmailInfo() {
-            console.log(this.$store.state.auth.email);
             return this.$store.state.auth.email;
         }
     }

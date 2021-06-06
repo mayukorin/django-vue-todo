@@ -10,13 +10,7 @@ export default {
     components: {
         TaskPanel
     },
-    data() {
-        return {
-            tasks:[],
-        }
-    },
     created: function() {
-        //task_list つけないとだめっぽい...
         this.taskList = this.$store.dispatch('task/fetchList');
     },
     computed: {

@@ -11,7 +11,7 @@
         </v-text-field>
         <v-text-field 
             label="パスワード"
-            v-model="form.check_password"
+            v-model="form.checkPassword"
             :rules="rules.password"
             maxlength="20"
             prepend-icon="mdi-lock"
@@ -40,27 +40,28 @@ export default {
             required: true
         }
     },
-    data: () => ({
-        form: {
-            email: '',
-            check_password: ''
-
-        },
-        valid:true,
-        rules: {
-            email: [
-                v => !!v || 'メールアドレスを入力してください',
-                (v) => REGEX_EMAIL.test(v) || 'メールアドレスの形式が間違っています',
-            ],
-            password: [
-                v => !!v || 'パスワードを入力してください'
-            ]
-        },
-    }),
+    data () {
+        return {
+            form: {
+                email: '',
+                checkPassword: ''
+            },
+            valid:true,
+            rules: {
+                email: [
+                    v => !!v || 'メールアドレスを入力してください',
+                    (v) => REGEX_EMAIL.test(v) || 'メールアドレスの形式が間違っています',
+                ],
+                password: [
+                    v => !!v || 'パスワードを入力してください'
+                ]
+            },
+        }
+    },
     methods: {
         handleClick() {
             if (!this.$refs.form.validate()) { return };
-            this.onUpdate({ email: this.form.email, confirm_password: this.form.check_password})
+            this.onUpdate({ email: this.form.email, confirm_password: this.form.checkPassword})
         }
     },
     created() {

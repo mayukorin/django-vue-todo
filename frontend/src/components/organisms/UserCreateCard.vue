@@ -22,10 +22,10 @@ export default {
         .then(() => {
           console.log("signin and login succeeded.");
           
-          this.$store.dispatch("message/setKeepInfoMessage", {
-            message: "ユーザ登録が完了し，ログインしました．"
+          this.$store.dispatch('message/setKeepInfoMessage', {
+            message: 'ユーザ登録が完了し，ログインしました．'
           });
-          const next = this.$route.query.next || "/";
+          const next = this.$route.query.next || '/';
           this.$router.replace(next);
         });
     },

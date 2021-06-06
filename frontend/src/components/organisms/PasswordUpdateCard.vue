@@ -4,13 +4,14 @@
             <span class="headline">パスワードの変更</span>
         </v-card-title>
         <v-card-text>
-            <PasswordUpdateForm :onUpdate="handleUpdate" />
+            <PasswordUpdateForm :on-update="handleUpdate" />
         </v-card-text>
     </v-card>
 </template>
 <script>
-import PasswordUpdateForm from "@/components/molecules/PasswordUpdateForm.vue";
+import PasswordUpdateForm from '@/components/molecules/PasswordUpdateForm';
 export default {
+    name: 'PasswordUpdateCard',
     components: {
         PasswordUpdateForm
     },
@@ -18,10 +19,10 @@ export default {
         handleUpdate(userInfo) {
             return this.$store.dispatch('auth/passwordUpdate', userInfo)
                 .then(() => {
-                    this.$store.dispatch("message/setInfoMessage", {
-                        message: "パスワードを変更しました．"
+                    this.$store.dispatch('message/setInfoMessage', {
+                        message: 'パスワードを変更しました．'
                     });
-                    this.$router.replace("/user-profile");
+                    this.$router.replace('/user-profile');
                 });
         }
     }

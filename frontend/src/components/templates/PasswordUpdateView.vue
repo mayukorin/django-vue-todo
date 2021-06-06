@@ -10,6 +10,7 @@
 <script>
 import PasswordUpdateCard from '@/components/organisms/PasswordUpdateCard';
 export default {
+    name: 'PasswordUpdateView',
     components: {
         PasswordUpdateCard
     },

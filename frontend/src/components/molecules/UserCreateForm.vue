@@ -35,7 +35,7 @@ const REGEX_EMAIL = /.+@.+/;
 export default {
     name: 'UserCreateForm',
     props: {
-        onsignin: {
+        onSignIn: {
             type: Function,
             required: true
         }
@@ -43,34 +43,32 @@ export default {
     components: {
         Button
     },
-    data: () => ({
-        form: {
-            email: '',
-            username: '',
-            password: '',
-        },
-        components: {
-            Button
-        },
-        valid:true,
-        rules: {
-            email: [
-                v => !!v || 'メールアドレスを入力してください',
-                v => REGEX_EMAIL.test(v) || 'メールアドレスの形式が間違っています',
-            ],
-            username: [
-                v => !!v || 'ユーザ名を入力してください',
-            ],
-            password: [
-                v => !!v || 'パスワードを入力してください',
-            ]
-
+    data ()  {
+        return {
+            form: {
+                email: '',
+                username: '',
+                password: '',
+            },
+            valid:true,
+            rules: {
+                email: [
+                    v => !!v || 'メールアドレスを入力してください',
+                    v => REGEX_EMAIL.test(v) || 'メールアドレスの形式が間違っています',
+                ],
+                username: [
+                    v => !!v || 'ユーザ名を入力してください',
+                ],
+                password: [
+                    v => !!v || 'パスワードを入力してください',
+                ]
+            }
         }
-    }),
+    },
     methods: {
         handleClick() {
             if (!this.$refs.form.validate()) { return };
-            return this.onsignin({ email: this.form.email, username: this.form.username, password: this.form.password });
+            return this.onsSignIn({ email: this.form.email, username: this.form.username, password: this.form.password });
         }
     }
 };

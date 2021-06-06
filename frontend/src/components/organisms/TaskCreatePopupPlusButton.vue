@@ -20,7 +20,7 @@
                 <span>タスク新規作成</span>
             </v-tooltip>
         </template>
-        <TaskCreateCard @dialog-false="dialogFalse" />
+        <TaskCreateCard @dialogFalse="dialogFalse" />
     </v-dialog>
 </template>
 <script>

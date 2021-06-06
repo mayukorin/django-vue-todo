@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import TaskEditPopup from "@/components/organisms/TaskEditPopup";
+import TaskEditPopup from '@/components/organisms/TaskEditPopup';
 export default {
   name: 'TaskPanel',
   components: {
@@ -37,10 +37,9 @@ export default {
   },
   methods: {
       taskDelete: function() {
-          console.log(this.task.pk);
           return this.$store.dispatch('task/deleteTask', this.task)
                 .then(() => {
-                    console.log("Task Delete succeeded.");
+                    console.log('Task Delete succeeded.');
                     this.$store.dispatch('message/setInfoMessage', {
                         message: 'タスクを1件削除しました'
                     });

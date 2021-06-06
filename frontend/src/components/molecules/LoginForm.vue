@@ -53,17 +53,7 @@ export default {
   methods: {
     handleClick() {
         if (!this.$refs.form.validate()) { return };
-        // ok と出力されるはず
         return this.onlogin({ email: this.form.email, password: this.form.password });
-        /*
-        this.onlogin({ email: this.form.email, password: this.form.password})
-            .catch(err => {
-                console.log(err);
-            })
-            .then(() => {
-                console.log('ログイン完了')
-            })
-        */
     },
   },
 };

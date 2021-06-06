@@ -10,6 +10,7 @@
 <script>
 import EmailUpdateCard from '@/components/organisms/EmailUpdateCard';
 export default {
+    name: 'EmailUpdateView',
     components: {
         EmailUpdateCard
     },

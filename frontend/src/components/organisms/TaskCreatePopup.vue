@@ -3,7 +3,7 @@
         <template v-slot:activator="{ on, attrs }">
             <v-btn text v-bind="attrs" v-on="on" class="success">Add new tasks</v-btn>
         </template>
-        <TaskCreateCard @dialog-false="dialogFalse" />
+        <TaskCreateCard @dialogFalse="dialogFalse" />
     </v-dialog>
 </template>
 <script>

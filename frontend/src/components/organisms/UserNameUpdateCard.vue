@@ -4,13 +4,14 @@
             <span class="headline">Username Update Page</span>
         </v-card-title>
         <v-card-text>
-            <UserNameUpdateForm :username="getUserNameInfo" :onUpdate="handleUpdate" />
+            <UserNameUpdateForm :username="getUserNameInfo" :on-update="handleUpdate" />
         </v-card-text>
     </v-card>
 </template>
 <script>
-import UserNameUpdateForm from "@/components/molecules/UserNameUpdateForm.vue";
+import UserNameUpdateForm from '@/components/molecules/UserNameUpdateForm';
 export default {
+    name: 'UserNameUpdateCard',
     components: {
         UserNameUpdateForm
     },
@@ -18,10 +19,10 @@ export default {
         handleUpdate(userInfo) {
             return this.$store.dispatch('auth/userNameUpdate', userInfo)
                 .then(() => {
-                    this.$store.dispatch("message/setInfoMessage", {
-                        message: "ユーザ名を変更しました．"
+                    this.$store.dispatch('message/setInfoMessage', {
+                        message: 'ユーザ名を変更しました．'
                     });
-                    this.$router.replace("/user-profile");
+                    this.$router.replace('/user-profile');
                 });
         }
     },
