@@ -6,7 +6,7 @@ from .models import User, Task
 
 class UserSerializer(serializers.ModelSerializer):
 
-    confirm_password = serializers.CharField(required=False)
+    confirm_password = serializers.CharField(required=False, write_only=True)
 
     class Meta:
         model = User
@@ -65,3 +65,5 @@ class TaskSerializer(serializers.ModelSerializer):
         del validated_data["user_id"]
 
         return super().create(validated_data)
+
+
