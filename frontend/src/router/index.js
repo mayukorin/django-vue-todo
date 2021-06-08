@@ -49,20 +49,6 @@ const routes = [
     component: UserNameUpdate,
     meta: { requiresAuth: true },
   },
-  /*
-  {
-    path: "/task-create",
-    name:  "TaskCreate",
-    component: TaskCreatePage,
-    meta: { requiresAuth: true }, 
-  },
-  {
-    path: "/task-edit/:task_pk",
-    name: 'TaskEdit',
-    component: TaskEditPage,
-    meta: { requiresAuth: true},
-  }
-  */
 ];
 
 const router = new VueRouter({

@@ -59,7 +59,6 @@ const authModule = {
       })
     },
     userNameUpdate(context, payload) {
-      
       return api({
           method: "patch",
           url: "user/profile/update/",
@@ -112,8 +111,6 @@ const messageModule = {
     warnings: [],
     info: "",
     keep_info: "",
-    is_show: false,
-    show_flag: false,
     color:"",
   },
   mutations: {
@@ -143,24 +140,10 @@ const messageModule = {
     clear_keep_info_message(state) {
       state.keep_info = "";
     },
-    set_is_show_true(state) {
-      state.is_show = true;
-    },
-    set_is_show_false(state) {
-      state.is_show = false;
-    },
-    set_show_flag_true(state) {
-      state.show_flag = true;
-    },
-    set_show_flag_false(state) {
-      console.log("zero");
-      state.show_flag = false;
-    },
   },
   actions: {
     setErrorMessage(context, payload) {
       context.commit("clear");
-      console.log("56");
       context.commit("set", { error: payload.message });
     },
     setWarningMessages(context, payload) {
@@ -182,18 +165,6 @@ const messageModule = {
     clearMessages(context) {
       context.commit("clear");
     },
-    setIsShowTrue(context) {
-      context.commit("set_is_show_true");
-    },
-    setIsShowFalse(context) {
-      context.commit("set_is_show_false");
-    },
-    setShowFlagTrue(context) {
-      context.commit("set_show_flag_true");
-    },
-    setShowFlagFalse(context) {
-      context.commit("set_show_flag_false");
-    }
   },
 };
 
@@ -201,25 +172,10 @@ const taskModule = {
   namespaced: true,
   state: {
     tasks: [],
-    update_flag: false,
-  },
-  getters: {
-    update_flag(state) {
-      return state.update_flag;
-    }
   },
   mutations: {
-    set(state, payload) {
-      state.tasks = payload;
-    },
     addTask(state, payload) {
       state.tasks.push(payload);
-    },
-    set_update_true(state) {
-      state.update_flag = true;
-    },
-    set_update_false(state) {
-      state.update_flag = false;
     },
     fetchTaskList(state, payload) {
       state.tasks = payload.taskList;
@@ -239,23 +195,8 @@ const taskModule = {
     }
   },
   actions: {
-    setTasks(context, payload) {
-      context.commit("set", payload);
-    },
-    /*
-    addTask(context, payload) {
-      context.commit("addTask", payload);
-    },
-    */
-    setUpdateFlagTrue(context) {
-      context.commit("set_update_true");
-    },
-    setUpdateFlagFalse(context) {
-      context.commit("set_update_false");
-    },
     fetchList(context) {
       return api.get("/task/list/").then((response) => {
-        console.log(response.data);
         context.commit("fetchTaskList", { taskList: response.data });
       });
     },
@@ -269,7 +210,6 @@ const taskModule = {
             deadline: payload.deadline,
         }
       }).then((response) => {
-        console.log(response.data);
         context.commit("AddTask", response.data);
       })
     },
@@ -283,7 +223,6 @@ const taskModule = {
           deadlie: payload.deadline
         }
       }).then((response) => {
-        console.log(response.data);
         context.commit("UpdateTask", response.data);
       })
     },
@@ -292,7 +231,7 @@ const taskModule = {
         method: "delete",
         url: `task/delete/${payload.pk}/`,
       }).then((response) => {
-        console.log(response);
+        console.log(response.data);
         context.commit("DeleteTask", payload);
       })
     }

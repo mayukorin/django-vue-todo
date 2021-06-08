@@ -53,19 +53,21 @@ export default {
             required: true
         },
     },
-    data: () => ({
-        form: {
-            title: '',
-            content: '',
-            deadline: format(parseISO(new Date().toISOString()), 'yyyy-MM-dd'),
-        },
-        valid:true,
-        rules: {
-            title: [
-                v => !!v || 'タスク名を入力してください',
-            ],
-        },
-    }),
+    data () {
+        return {
+            form: {
+                title: '',
+                content: '',
+                deadline: format(parseISO(new Date().toISOString()), 'yyyy-MM-dd'),
+            },
+            valid:true,
+            rules: {
+                title: [
+                    v => !!v || 'タスク名を入力してください',
+                ],
+            },
+        }
+    },
     methods: {
         handleClick() {
             if (!this.$refs.form.validate()) { return };

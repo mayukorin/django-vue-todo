@@ -31,13 +31,13 @@ class UserProfileUpdateAPIView(generics.UpdateAPIView):
     def get_object(self):
         return self.request.user
 
-
+'''
 class UserEditAPIView(generics.RetrieveAPIView):
 
     serializer_class = UserSerializer
     queryset = User.objects.all()
     permission_classes = (IsAuthenticated,)
-
+'''
 
 class TaskCreateAPIView(generics.CreateAPIView):
 
@@ -60,13 +60,13 @@ class TaskListAPIView(generics.ListAPIView):
         queryset = super().get_queryset()
         return queryset.filter(user__id=self.request.user.id)
 
-
+'''
 class TaskEditAPIView(generics.RetrieveAPIView):
 
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
     permission_classes = (IsAuthenticated,)
-
+'''
 
 class TaskUpdateAPIView(generics.UpdateAPIView):
 

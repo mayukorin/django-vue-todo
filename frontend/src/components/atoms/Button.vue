@@ -6,11 +6,10 @@
 
 <script>
 export default {
-  name: "Button",
+  name: 'Button',
   methods: {
     handleClick() {
-      // `click` イベントを発行
-      this.$emit("click");
+      this.$emit('click');
     },
   },
 };

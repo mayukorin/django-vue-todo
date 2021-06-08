@@ -32,11 +32,11 @@
                 </v-list-item>
             </v-list>
         </v-menu>
-        <v-btn v-if="isLoggedIn" text color="grey" @click="Logout">
+        <v-btn v-if="isLoggedIn" text color="grey" @click="logout">
             <span>Sign out</span>
             <v-icon right>mdi-exit-to-app</v-icon>
         </v-btn>
-        <v-btn v-else text color="grey" @click="Login">
+        <v-btn v-else text color="grey" @click="login">
             <span>Sign In</span>
             <v-icon right>mdi-exit-to-app</v-icon>
         </v-btn>
@@ -44,15 +44,16 @@
 </template>
 <script>
 export default {
+    name: 'Appbar',
     methods: {
-        Logout() {
+        logout() {
             this.$store.dispatch('auth/logout');
             this.$store.dispatch('message/setInfoMessage', {
                 message: 'ログアウトしました．'
             });
             this.$router.replace('/login');
         },
-        Login() {
+        login() {
             this.$router.replace('/login');
         },
         handleDrawer() {

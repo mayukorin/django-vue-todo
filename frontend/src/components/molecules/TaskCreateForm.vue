@@ -48,31 +48,25 @@ export default {
             required: true
         }
     },
-    data: () => ({
-        form: {
-            title: '',
-            content: '',
-            //deadline: format(parseISO(new Date().toISOString()), 'yyyy-MM-dd'),
-            deadline: null,
-        },
-        valid:true,
-        rules: {
-            title: [
-                v => !!v || 'タスク名を入力してください',
-            ],
-        },
-    }),
+    data () {
+        return {
+            form: {
+                title: '',
+                content: '',
+                deadline: null,
+            },
+            valid:true,
+            rules: {
+                title: [
+                    v => !!v || 'タスク名を入力してください',
+                ],
+            },
+        }
+    },
     methods: {
         handleClick() {
             if (!this.$refs.form.validate()) { return };
             this.onCreate({ title: this.form.title, content: this.form.content, deadline: this.form.deadline})
-            /*
-                .then(() => {
-                    this.form.title = '';
-                    this.form.content = '';
-                    this.form.deadline = format(parseISO(new Date().toISOString()), 'yyyy-MM-dd');
-                })
-                */
         }
     },
     computed: {

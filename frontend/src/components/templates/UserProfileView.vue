@@ -9,6 +9,7 @@
 <script>
 import UserProfileCard from '@/components/organisms/UserProfileCard';
 export default {
+    name: 'UserProfileView',
     components: {
         UserProfileCard
     },

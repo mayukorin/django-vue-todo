@@ -12,6 +12,7 @@
 <script>
 import SnackBarMessage from '@/components/molecules/SnackBarMessage';
 export default {
+    name: 'SnackBar',
     components: { SnackBarMessage },
     data() {
         return {
@@ -29,7 +30,7 @@ export default {
     },
     computed: {
         getMessage() {
-            if (this.$store.state.message.info != "" || this.$store.state.message.error != "" || this.$store.state.message.warnings.length > 0) {
+            if (this.$store.state.message.info != '' || this.$store.state.message.error != '' || this.$store.state.message.warnings.length > 0) {
                 this.openSnackBar();
             }
             return this.$store.state.message;

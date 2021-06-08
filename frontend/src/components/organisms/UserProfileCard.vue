@@ -1,22 +1,22 @@
 <template>
     <v-card>
-        <UserProfileList :UserInfo="GetUserInfo"/>
+        <UserProfileList :user-info="getUserInfo"/>
     </v-card>
 </template>
 <script>
 import UserProfileList from '@/components/molecules/UserProfileList';
 export default {
+    name: 'UserProfileCard',
     components: {
         UserProfileList
     },
     methods: {
-        GoUpdatePage: function(next_url) {
+        goUpdatePage: function(next_url) {
             this.$router.replace(next_url);
         }
     },
     computed: {
-        GetUserInfo() {
-            console.log(this.$store.state.auth);
+        getUserInfo() {
             return this.$store.state.auth;
         }
     }
