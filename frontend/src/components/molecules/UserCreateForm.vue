@@ -68,7 +68,7 @@ export default {
     methods: {
         handleClick() {
             if (!this.$refs.form.validate()) { return };
-            return this.onsSignIn({ email: this.form.email, username: this.form.username, password: this.form.password });
+            return this.onSignIn({ email: this.form.email, username: this.form.username, password: this.form.password });
         }
     }
 };

@@ -4,7 +4,7 @@
       <span class="headline">todo-app</span>
     </v-card-title>
     <v-card-text>
-      <UserCreateForm :onsignin="handleSignin" />
+      <UserCreateForm :on-signin="handleSignin" />
     </v-card-text>
   </v-card>
 </template>

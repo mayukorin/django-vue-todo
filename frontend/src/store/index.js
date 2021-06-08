@@ -144,7 +144,6 @@ const messageModule = {
   actions: {
     setErrorMessage(context, payload) {
       context.commit("clear");
-      console.log("56");
       context.commit("set", { error: payload.message });
     },
     setWarningMessages(context, payload) {
