@@ -1,7 +1,7 @@
 <template>
     <div>
         <div @click.stop="dialogTrue">
-                <div class="caption grey--text">edit</div>
+                <div class="caption grey--text">編集</div>
                 <v-icon>mdi-pencil</v-icon>
         </div>
         <v-dialog v-model="dialog" max-width="600px">

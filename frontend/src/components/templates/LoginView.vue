@@ -17,5 +17,10 @@ export default {
   components: {
     LoginCard,
   },
+  methods: {
+    goUserCreatePage() {
+      this.$router.replace('/user-create');
+    }
+  }
 };
 </script>

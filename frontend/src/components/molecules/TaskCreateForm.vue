@@ -20,12 +20,14 @@
             transition="scale-transition"
         >
             <template v-slot:activator="{ on, attrs }">
-                <v-text-field :value="formattedDate"  v-bind="attrs" v-on="on"  label="Due date" prepend-icon="mdi-calendar" readonly>
+                <v-text-field :value="formattedDate"  v-bind="attrs" v-on="on"  label="締め切り" prepend-icon="mdi-calendar" readonly>
                 </v-text-field>
             </template>
             <v-date-picker 
                 v-model="form.deadline"
                 scrollable
+                locale="jp-ja"
+                :day-format="date => new Date(date).getDate()"
             >
             </v-date-picker>
         </v-menu>

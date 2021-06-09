@@ -220,7 +220,7 @@ const taskModule = {
         data: {
           title: payload.title,
           content: payload.content,
-          deadlie: payload.deadline
+          deadline: payload.deadline
         }
       }).then((response) => {
         context.commit("UpdateTask", response.data);

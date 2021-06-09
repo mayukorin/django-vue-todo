@@ -1,7 +1,7 @@
 <template>
   <v-card class="login-card px-3">
     <v-card-title>
-      <span class="headline">task-create</span>
+      <span class="headline">タスク新規作成</span>
     </v-card-title>
     <v-card-text>
       <TaskCreateForm :on-create="handleCreate" />

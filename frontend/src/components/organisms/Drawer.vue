@@ -11,7 +11,7 @@
                     <v-icon class="white--text">mdi-clipboard-list</v-icon>
                 </v-list-item-icon>
                 <v-list-item-content>
-                    <v-list-item-title class="white--text">Task List</v-list-item-title>
+                    <v-list-item-title class="white--text">タスク一覧</v-list-item-title>
                 </v-list-item-content>
             </v-list-item>
             <v-list-item router to="/user-profile">
@@ -19,7 +19,7 @@
                     <v-icon class="white--text">mdi-account</v-icon>
                 </v-list-item-icon>
                 <v-list-item-content>
-                    <v-list-item-title class="white--text">Account Edit</v-list-item-title>
+                    <v-list-item-title class="white--text">ユーザ情報一覧</v-list-item-title>
                 </v-list-item-content>
             </v-list-item>
         </v-list>
@@ -29,7 +29,7 @@
                     <v-icon class="white--text">mdi-account</v-icon>
                 </v-list-item-icon>
                 <v-list-item-content>
-                    <v-list-item-title class="white--text">Account Create</v-list-item-title>
+                    <v-list-item-title class="white--text">アカウント新規登録</v-list-item-title>
                 </v-list-item-content>
             </v-list-item>
         </v-list>

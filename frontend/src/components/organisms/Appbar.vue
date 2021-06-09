@@ -15,19 +15,19 @@
             <v-list v-if="isLoggedIn">
                 <v-list-item router to="/">
                     <v-list-item-content>
-                        <v-list-item-title>Task List</v-list-item-title>
+                        <v-list-item-title>タスク一覧</v-list-item-title>
                     </v-list-item-content>
                 </v-list-item>
                 <v-list-item router to="/user-profile">
                     <v-list-item-content>
-                        <v-list-item-title>Account Profile</v-list-item-title>
+                        <v-list-item-title>ユーザ情報一覧</v-list-item-title>
                     </v-list-item-content>
                 </v-list-item>
             </v-list>
             <v-list v-else>
                 <v-list-item router to="/user-create">
                     <v-list-item-content>
-                        <v-list-item-title>Account Create</v-list-item-title>
+                        <v-list-item-title>アカウント新規登録</v-list-item-title>
                     </v-list-item-content>
                 </v-list-item>
             </v-list>

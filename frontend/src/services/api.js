@@ -50,7 +50,7 @@ api.interceptors.response.use(
       if (token != null) {
         message = "ログインの有効期限切れです．";
       } else {
-        message = "パスワードかメールアドレスが間違っています．";
+        message = "パスワード・メールアドレスに誤りがあるか，登録されていません．";
       }
       store.dispatch("auth/logout");
       store.dispatch("message/setErrorMessage", { message: message });

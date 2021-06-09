@@ -1,7 +1,7 @@
 <template>
   <v-card class="login-card px-3">
     <v-card-title>
-      <span class="headline">task-update</span>
+      <span class="headline">タスク編集</span>
     </v-card-title>
     <v-card-text>
       <TaskEditForm :on-update="handleUpdate" :task="task"/>
@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import TaskEditForm from "@/components/molecules/TaskEditForm";
+import TaskEditForm from '@/components/molecules/TaskEditForm';
 export default {
   name: 'TaskEditCard',
   props: {

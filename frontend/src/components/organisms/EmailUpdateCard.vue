@@ -1,7 +1,7 @@
 <template>
     <v-card>
         <v-card-title>
-            <span class="headline">Update Email</span>
+            <span class="headline">メールアドレスの変更</span>
         </v-card-title>
         <v-card-text>
             <EmailUpdateForm :email="getEmailInfo" :onUpdate="handleUpdate" />

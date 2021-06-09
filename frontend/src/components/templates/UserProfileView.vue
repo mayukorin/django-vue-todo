@@ -1,6 +1,6 @@
 <template>
     <div id="profile">
-        <h1 class="subtitle-1 grey--text">Profile</h1>
+        <h1 class="subtitle-1 grey--text">ユーザ情報</h1>
         <v-container class="my-5">
             <UserProfileCard />
         </v-container>

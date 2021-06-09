@@ -1,5 +1,5 @@
 <template>
-  <v-form  ref="form">
+  <v-form  ref="form" class="mb-3">
     <v-text-field
       v-model="form.email"
       label="メールアドレス"

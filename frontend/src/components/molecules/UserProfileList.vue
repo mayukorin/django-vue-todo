@@ -2,7 +2,7 @@
     <div>
         <v-row class="ma-0 pa-3">
             <v-col cols="12" md="10">
-                <div class="caption grey--text">email</div>
+                <div class="caption grey--text">メールアドレス</div>
                 <div class="black--text">{{ User.email }}</div>
             </v-col>
             <v-col cols="4" md="2">
@@ -12,7 +12,7 @@
         <v-divider></v-divider>
         <v-row class="ma-0 pa-3">
             <v-col cols="12" md="10">
-                <div class="caption grey--text">username</div>
+                <div class="caption grey--text">ユーザ名</div>
                 <div class="black--text">{{ User.username }}</div>
             </v-col>
             <v-col cols="4" md="2">
@@ -22,7 +22,7 @@
         <v-divider></v-divider>
         <v-row class="ma-0 pa-3">
             <v-col cols="12" md="10">
-                <div class="caption grey--text">password</div>
+                <div class="caption grey--text">パスワード</div>
             </v-col>
             <v-col cols="4" md="2">
                 <v-btn depressed class="success white--text" @click="goUpdatePage('/password-update')">編集</v-btn>
@@ -53,7 +53,8 @@ export default {
         this.User.username = this.UserInfo.username;
     },
     methods: {
-        GoUpdatePage: function(next_url) {
+        goUpdatePage: function(next_url) {
+            console.log("aaaa");
             this.$router.replace(next_url);
         }
     }

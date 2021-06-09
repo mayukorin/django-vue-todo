@@ -1,10 +1,13 @@
 <template>
     <v-card>
         <v-card-title>
-            <span class="headline">Username Update Page</span>
+            <span class="headline">ユーザ名の変更</span>
         </v-card-title>
         <v-card-text>
             <UserNameUpdateForm :username="getUserNameInfo" :on-update="handleUpdate" />
+            <div class="my-3">
+                <router-link to="/user-profile">ユーザ情報一覧へ戻る</router-link>
+            </div>
         </v-card-text>
     </v-card>
 </template>

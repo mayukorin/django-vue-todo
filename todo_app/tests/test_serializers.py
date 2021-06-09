@@ -1,6 +1,6 @@
 from django.test import TestCase
 from ..models import Task
-from ..serializers import TaskSerializer, UserSerializer
+from ..serializers import TfaskSerializer, UserSerializer
 from django.contrib.auth import get_user_model
 
 

@@ -5,16 +5,21 @@
     </v-card-title>
     <v-card-text>
       <LoginForm :onlogin="handleLogin" />
+      <v-divider class="mb-3"></v-divider>
+      アカウントをお持ちではない方は
+      <Button @click="goUserCreatePage()">アカウント新規登録</Button>
     </v-card-text>
   </v-card>
 </template>
 
 <script>
 import LoginForm from '@/components/molecules/LoginForm';
+import Button from '@/components/atoms/Button';
 export default {
   name: 'LoginCard',
   components: {
     LoginForm,
+    Button
   },
   methods: {
     handleLogin(authInfo) {
@@ -28,6 +33,9 @@ export default {
           this.$router.replace(next);
         });
     },
+    goUserCreatePage() {
+      this.$router.replace('/user-create');
+    }
   },
 };
 </script>

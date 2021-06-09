@@ -16,6 +16,7 @@ export default {
     computed: {
         taskList: {
             get() {
+                console.log(this.$store.state.task.tasks);
                 return this.$store.state.task.tasks;
             },
             set(value) {
