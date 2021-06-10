@@ -12,22 +12,21 @@
 <script>
 import UserCreateForm from "@/components/molecules/UserCreateForm";
 export default {
-  name: 'UserCreateCard',
+  name: "UserCreateCard",
   components: {
-    UserCreateForm
+    UserCreateForm,
   },
   methods: {
     handleSignin(userInfo) {
-      return this.$store.dispatch('auth/signup', userInfo)
-        .then(() => {
-          console.log("signin and login succeeded.");
-          
-          this.$store.dispatch('message/setKeepInfoMessage', {
-            message: 'ユーザ登録が完了し，ログインしました．'
-          });
-          const next = this.$route.query.next || '/';
-          this.$router.replace(next);
+      return this.$store.dispatch("auth/signup", userInfo).then(() => {
+        console.log("signin and login succeeded.");
+
+        this.$store.dispatch("message/setKeepInfoMessage", {
+          message: "ユーザ登録が完了し，ログインしました．",
         });
+        const next = this.$route.query.next || "/";
+        this.$router.replace(next);
+      });
     },
   },
 };

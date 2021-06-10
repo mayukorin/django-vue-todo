@@ -24,26 +24,31 @@ const routes = [
     path: "/login",
     name: "Login",
     component: Login,
-  },{
+  },
+  {
     path: "/user-create",
     name: "UserCreate",
     component: UserCreate,
-  },{
+  },
+  {
     path: "/user-profile",
     name: "UserProfile",
     component: UserProfile,
     meta: { requiresAuth: true },
-  },{
+  },
+  {
     path: "/password-update",
     name: "PasswordUpdate",
     component: PasswordUpdate,
     meta: { requiresAuth: true },
-  },{
+  },
+  {
     path: "/email-update",
     name: "EmailUpdate",
     component: EmailUpdate,
     meta: { requiresAuth: true },
-  },{
+  },
+  {
     path: "/username-update",
     name: "UsernameUpdate",
     component: UserNameUpdate,

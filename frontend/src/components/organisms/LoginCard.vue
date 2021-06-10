@@ -13,29 +13,28 @@
 </template>
 
 <script>
-import LoginForm from '@/components/molecules/LoginForm';
-import Button from '@/components/atoms/Button';
+import LoginForm from "@/components/molecules/LoginForm";
+import Button from "@/components/atoms/Button";
 export default {
-  name: 'LoginCard',
+  name: "LoginCard",
   components: {
     LoginForm,
-    Button
+    Button,
   },
   methods: {
     handleLogin(authInfo) {
-      return this.$store.dispatch('auth/login', authInfo)
-        .then(() => {
-          console.log('Login succeeded.');
-          this.$store.dispatch('message/setKeepInfoMessage', {
-            message: 'ログインしました．'
-          });
-          const next = this.$route.query.next || '/';
-          this.$router.replace(next);
+      return this.$store.dispatch("auth/login", authInfo).then(() => {
+        console.log("Login succeeded.");
+        this.$store.dispatch("message/setKeepInfoMessage", {
+          message: "ログインしました．",
         });
+        const next = this.$route.query.next || "/";
+        this.$router.replace(next);
+      });
     },
     goUserCreatePage() {
-      this.$router.replace('/user-create');
-    }
+      this.$router.replace("/user-create");
+    },
   },
 };
 </script>

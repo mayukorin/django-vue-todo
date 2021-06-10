@@ -2,20 +2,20 @@
   <div id="home-view">
     <h1 class="subtitle-1 grey--text">タスク一覧</h1>
     <v-container class="my-5">
-        <TaskCreatePopupPlusButton />
-        <TaskListPanels />
+      <TaskCreatePopupPlusButton />
+      <TaskListPanels />
     </v-container>
   </div>
 </template>
 
 <script>
-import TaskListPanels from '@/components/organisms/TaskListPanels';
-import TaskCreatePopupPlusButton from '@/components/organisms/TaskCreatePopupPlusButton';
+import TaskListPanels from "@/components/organisms/TaskListPanels";
+import TaskCreatePopupPlusButton from "@/components/organisms/TaskCreatePopupPlusButton";
 export default {
-    name: 'HomeView',
-    components: {
-        TaskListPanels,
-        TaskCreatePopupPlusButton
-    },
+  name: "HomeView",
+  components: {
+    TaskListPanels,
+    TaskCreatePopupPlusButton,
+  },
 };
 </script>

@@ -1,4 +1,4 @@
-<template> 
+<template>
   <v-row justify="center">
     <v-btn text class="success mx-0 my-3 button" @click="handleClick">
       <slot />
@@ -8,16 +8,16 @@
 
 <script>
 export default {
-  name: 'Button',
+  name: "Button",
   methods: {
     handleClick() {
-      this.$emit('click');
+      this.$emit("click");
     },
   },
 };
 </script>
 <style scoped>
-  .button {
-    text-align: center;
-  }
+.button {
+  text-align: center;
+}
 </style>
