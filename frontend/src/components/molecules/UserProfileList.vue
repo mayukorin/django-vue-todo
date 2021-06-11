@@ -68,7 +68,6 @@ export default {
   },
   methods: {
     goUpdatePage: function (next_url) {
-      console.log("aaaa");
       this.$router.replace(next_url);
     },
   },

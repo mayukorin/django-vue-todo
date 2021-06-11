@@ -164,8 +164,6 @@ const messageModule = {
       context.commit("set", { info: payload.message });
     },
     setKeepInfoMessage(context, payload) {
-      console.log("wowo");
-      console.log(payload.message);
       context.commit("set", { keep_info: payload.message });
     },
     clearKeepInfoMessage(context) {
