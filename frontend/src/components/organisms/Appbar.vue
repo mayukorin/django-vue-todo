@@ -52,7 +52,7 @@ export default {
     logout() {
       this.$store.dispatch("auth/logout");
       this.$store.dispatch("message/setInfoMessage", {
-        message: "ログアウトしました．",
+        message: "サインアウトしました．",
       });
       this.$router.replace("/login");
     },

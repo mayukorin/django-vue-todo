@@ -14,13 +14,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
-from django.views.generic import TemplateView
+from django.urls import path, include, re_path
+from django.views.generic import TemplateView, RedirectView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', TemplateView.as_view(template_name='index.html')),
     path('todo/auth/', include('djoser.urls')),
     path('todo/auth/', include('djoser.urls.jwt')),
-    path('todo/', include('todo_app.urls'),)
+    path('todo/', include('todo_app.urls')),
+    re_path('', RedirectView.as_view(url='/'))
+    
 ]

@@ -54,6 +54,10 @@ const routes = [
     component: UserNameUpdate,
     meta: { requiresAuth: true },
   },
+  {
+    path: "*",
+    component: Login,
+  },
 ];
 
 const router = new VueRouter({

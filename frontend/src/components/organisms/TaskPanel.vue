@@ -20,7 +20,9 @@
         {{ formattedDate }} まで
       </div>
       <div v-else class="foot-weight-bold">期限なし</div>
-      <div>{{ task.content }}</div>
+      <div>
+        <p style="white-space: pre">{{ task.content }}</p>
+      </div>
     </v-expansion-panel-content>
   </v-expansion-panel>
 </template>
@@ -57,3 +59,9 @@ export default {
   },
 };
 </script>
+<style scoped>
+.on-hover {
+  border: 3px solid;
+  border-color: grey;
+}
+</style>

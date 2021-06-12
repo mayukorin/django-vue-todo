@@ -4,9 +4,7 @@ todoアプリ
 
 # DEMO
 
-[デモ](https://chatapp-reactts.web.app/)
-
-アプリの使い方が直感で分かる画像を載せる
+[こちらにアクセス](https://django-vue-todo.herokuapp.com/)
 
 # Features
 
