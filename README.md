@@ -8,6 +8,7 @@ todoアプリ
 
 # Features
 
+Django REST framework と Vue.js を使った簡単なtodoアプリ
 
 ## ログイン
 
@@ -61,18 +62,12 @@ todoアプリ
 
 # Requirement
 
-アプリを動かすのに必要なライブラリ等を挙げる
-
-- @material-ui/core: ^4.11.3
-- @material-ui/icons: ^4.11.2
-- @reduxjs/toolkit: ^1.5.1
-- firebase: ^8.4.1
-- react: ^17.0.2,
-- react-redux : ^7.2.0
-- typescript: ~4.1.5
-
-
+- Docker
+- Docker Compose
 
 # Installation
 
-Requirementのインストール方法を書く
+https://docs.docker.jp/get-docker.html
+
+
+
