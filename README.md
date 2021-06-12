@@ -11,8 +11,10 @@ todoアプリ
 
 ## ログイン
 
-- メールアドレス: usera@gmail.com,
-  パスワード: test00 でログイン・利用可能
+- メールアドレス: test@example.com,
+  パスワード: abc でログイン・利用可能
+
+![login](https://user-images.githubusercontent.com/63027348/121768823-4bfa5b00-cb9b-11eb-9fef-e52d633cf5de.png)
 
 ## アカウント作成
 
