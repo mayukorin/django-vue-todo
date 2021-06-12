@@ -11,8 +11,7 @@
 import Navbar from "@/components/organisms/Navbar";
 
 export default {
-  name: 'App',
+  name: "App",
   components: { Navbar },
-}
+};
 </script>
-

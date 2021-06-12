@@ -1,5 +1,5 @@
 <template>
-  <v-form  ref="form">
+  <v-form ref="form" class="mb-3">
     <v-text-field
       v-model="form.email"
       label="メールアドレス"
@@ -12,18 +12,19 @@
       label="パスワード"
       :rules="rules.password"
       prepend-icon="mdi-lock"
+      type="password"
     />
-    <Button @click="handleClick">ログイン</Button>
+    <Button @click="handleClick">サインイン</Button>
   </v-form>
 </template>
 
 <script>
-import Button from '@/components/atoms/Button';
+import Button from "@/components/atoms/Button";
 // メールアドレスのフォーマット
 const REGEX_EMAIL = /.+@.+/;
 
 export default {
-  name: 'LoginForm',
+  name: "LoginForm",
   components: {
     Button,
   },
@@ -35,25 +36,28 @@ export default {
   },
   data() {
     return {
-        form: {
-            email: '',
-            password: '',
-        },
-        rules: {
-            email: [
-                (v) => !!v || 'メールアドレスを入力してください',
-                (v) => REGEX_EMAIL.test(v) || 'メールアドレスの形式が間違っています',
-            ],
-            password: [
-                (v) => !!v || 'パスワードを入力してください'
-            ],
-        },
+      form: {
+        email: "",
+        password: "",
+      },
+      rules: {
+        email: [
+          (v) => !!v || "メールアドレスを入力してください",
+          (v) => REGEX_EMAIL.test(v) || "メールアドレスの形式が間違っています",
+        ],
+        password: [(v) => !!v || "パスワードを入力してください"],
+      },
     };
   },
   methods: {
     handleClick() {
-        if (!this.$refs.form.validate()) { return };
-        return this.onlogin({ email: this.form.email, password: this.form.password });
+      if (!this.$refs.form.validate()) {
+        return;
+      }
+      return this.onlogin({
+        email: this.form.email,
+        password: this.form.password,
+      });
     },
   },
 };

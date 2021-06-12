@@ -11,11 +11,16 @@
 </template>
 
 <script>
-import LoginCard from '@/components/organisms/LoginCard';
+import LoginCard from "@/components/organisms/LoginCard";
 export default {
-  name: 'LoginView',
+  name: "LoginView",
   components: {
     LoginCard,
+  },
+  methods: {
+    goUserCreatePage() {
+      this.$router.replace("/user-create");
+    },
   },
 };
 </script>

@@ -52,25 +52,31 @@ const authModule = {
         data: {
           email: payload.email,
           username: payload.username,
-          password: payload.password
-        }
+          password: payload.password,
+        },
       }).then((response) => {
-        return context.dispatch("login", {email: response.data.email, password: payload.password})
-      })
+        return context.dispatch("login", {
+          email: response.data.email,
+          password: payload.password,
+        });
+      });
     },
     userNameUpdate(context, payload) {
       return api({
-          method: "patch",
-          url: "user/profile/update/",
-          data: {
-              username: payload.username,
-              confirm_password: payload.confirm_password
-          }
-        }).then(response => {
-          const password = payload.confirm_password;
-          context.dispatch("logout");
-          return context.dispatch("login", {email: response.data.email, password: password});
-        })
+        method: "patch",
+        url: "user/profile/update/",
+        data: {
+          username: payload.username,
+          confirm_password: payload.confirm_password,
+        },
+      }).then((response) => {
+        const password = payload.confirm_password;
+        context.dispatch("logout");
+        return context.dispatch("login", {
+          email: response.data.email,
+          password: password,
+        });
+      });
     },
     emailUpdate(context, payload) {
       return api({
@@ -78,29 +84,32 @@ const authModule = {
         url: "user/profile/update/",
         data: {
           email: payload.email,
-          confirm_password: payload.confirm_password
-        }
-      }).then(response => {
+          confirm_password: payload.confirm_password,
+        },
+      }).then((response) => {
         const password = payload.confirm_password;
         context.dispatch("logout");
-        return context.dispatch("login", {email: response.data.email, password: password});
-      })
+        return context.dispatch("login", {
+          email: response.data.email,
+          password: password,
+        });
+      });
     },
     passwordUpdate(context, payload) {
       return api({
         method: "patch",
         url: "/password/update/",
         data: {
-            confirm_password: payload.confirm_password,
-            password: payload.new_password
-        }
-      }).then(response => {
+          confirm_password: payload.confirm_password,
+          password: payload.new_password,
+        },
+      }).then((response) => {
         const password = payload.new_password;
         const email = response.data.email;
         context.dispatch("logout");
-        return context.dispatch("login", {email: email, password: password});
-      })
-    }
+        return context.dispatch("login", { email: email, password: password });
+      });
+    },
   },
 };
 
@@ -111,7 +120,7 @@ const messageModule = {
     warnings: [],
     info: "",
     keep_info: "",
-    color:"",
+    color: "",
   },
   mutations: {
     set(state, payload) {
@@ -155,8 +164,6 @@ const messageModule = {
       context.commit("set", { info: payload.message });
     },
     setKeepInfoMessage(context, payload) {
-      console.log("wowo");
-      console.log(payload.message);
       context.commit("set", { keep_info: payload.message });
     },
     clearKeepInfoMessage(context) {
@@ -184,15 +191,15 @@ const taskModule = {
       state.tasks.push(payload);
     },
     UpdateTask(state, payload) {
-      const task = state.tasks.find(task => task.pk === payload.pk);
+      const task = state.tasks.find((task) => task.pk === payload.pk);
       task.title = payload.title;
       task.content = payload.content;
       task.deadline = payload.deadline;
     },
     DeleteTask(state, payload) {
-      const task = state.tasks.find(task => task.pk === payload.pk);
-      state.tasks.splice(state.tasks.indexOf(task), 1)
-    }
+      const task = state.tasks.find((task) => task.pk === payload.pk);
+      state.tasks.splice(state.tasks.indexOf(task), 1);
+    },
   },
   actions: {
     fetchList(context) {
@@ -205,13 +212,13 @@ const taskModule = {
         method: "post",
         url: "/task/create/",
         data: {
-            title: payload.title,
-            content: payload.content,
-            deadline: payload.deadline,
-        }
+          title: payload.title,
+          content: payload.content,
+          deadline: payload.deadline,
+        },
       }).then((response) => {
         context.commit("AddTask", response.data);
-      })
+      });
     },
     updateTask(context, payload) {
       return api({
@@ -220,11 +227,11 @@ const taskModule = {
         data: {
           title: payload.title,
           content: payload.content,
-          deadlie: payload.deadline
-        }
+          deadline: payload.deadline,
+        },
       }).then((response) => {
         context.commit("UpdateTask", response.data);
-      })
+      });
     },
     deleteTask(context, payload) {
       return api({
@@ -233,10 +240,10 @@ const taskModule = {
       }).then((response) => {
         console.log(response.data);
         context.commit("DeleteTask", payload);
-      })
-    }
-  }
-}
+      });
+    },
+  },
+};
 
 const store = new Vuex.Store({
   modules: {

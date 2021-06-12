@@ -37,7 +37,7 @@ class UserSerializer(serializers.ModelSerializer):
         if raw_password is not None:
             hashed_password = make_password(raw_password)
             validated_data["password"] = hashed_password
-        return super().update(self.instance, validated_data)
+        return super().update(instance, validated_data)
 
     def create(self, validated_data):
         raw_password = validated_data.get("password")
@@ -65,5 +65,3 @@ class TaskSerializer(serializers.ModelSerializer):
         del validated_data["user_id"]
 
         return super().create(validated_data)
-
-
