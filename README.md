@@ -18,7 +18,11 @@ todoアプリ
 
 ## アカウント作成
 
+- 赤丸のどこかをクリックすると，アカウント作成の画面へ移動
+![userCreate](https://user-images.githubusercontent.com/63027348/121768994-23269580-cb9c-11eb-9150-b8e216431def.png)
+
 - 既にほかのユーザに使われているメールアドレスでは，アカウントを作成できない
+![create](https://user-images.githubusercontent.com/63027348/121768913-ca56fd00-cb9b-11eb-87df-d3d580f81730.png)
 
 ## タスク一覧
 
