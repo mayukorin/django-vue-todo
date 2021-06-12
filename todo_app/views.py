@@ -31,6 +31,7 @@ class UserProfileUpdateAPIView(generics.UpdateAPIView):
     def get_object(self):
         return self.request.user
 
+
 class TaskCreateAPIView(generics.CreateAPIView):
 
     serializer_class = TaskSerializer
@@ -52,12 +53,12 @@ class TaskListAPIView(generics.ListAPIView):
         queryset = super().get_queryset()
         return queryset.filter(user__id=self.request.user.id)
 
+
 class TaskUpdateAPIView(generics.UpdateAPIView):
 
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
     permission_classes = (IsAuthenticated,)
-   
 
 
 class TaskDeleteAPIView(generics.DestroyAPIView):

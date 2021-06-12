@@ -65,5 +65,3 @@ class TaskSerializer(serializers.ModelSerializer):
         del validated_data["user_id"]
 
         return super().create(validated_data)
-
-
