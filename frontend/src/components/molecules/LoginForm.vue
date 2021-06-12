@@ -14,7 +14,7 @@
       prepend-icon="mdi-lock"
       type="password"
     />
-    <Button @click="handleClick">ログイン</Button>
+    <Button @click="handleClick">サインイン</Button>
   </v-form>
 </template>
 

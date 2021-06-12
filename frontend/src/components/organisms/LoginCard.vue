@@ -26,7 +26,7 @@ export default {
       return this.$store.dispatch("auth/login", authInfo).then(() => {
         console.log("Login succeeded.");
         this.$store.dispatch("message/setKeepInfoMessage", {
-          message: "ログインしました．",
+          message: "サインインしました．",
         });
         const next = this.$route.query.next || "/";
         this.$router.replace(next);

@@ -380,7 +380,7 @@ class TESTTaskListAPIView(APITestCase):
             email="xxx@example.com", username="abc", password="abc"
         )
 
-        # 違うユーザーがログイン
+        # 違うユーザがログイン
         token = str(RefreshToken.for_user(other_user).access_token)
         self.client.credentials(HTTP_AUTHORIZATION="JWT " + token)
         response = self.client.get(self.TARGET_URL, params, format="json")

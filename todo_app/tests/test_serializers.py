@@ -1,6 +1,6 @@
 from django.test import TestCase
 from ..models import Task
-from ..serializers import TfaskSerializer, UserSerializer
+from ..serializers import TaskSerializer, UserSerializer
 from django.contrib.auth import get_user_model
 
 
@@ -67,7 +67,6 @@ class TestUserSerializer(TestCase):
             long_email += "a"
 
         long_email += "@example.com"
-        # print(long_email)
         input_data = {"email": long_email, "username": "aaa", "password": "aaa"}
         serializer = UserSerializer(data=input_data)
         self.assertEqual(serializer.is_valid(), False)
