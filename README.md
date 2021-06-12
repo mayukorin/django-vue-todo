@@ -69,5 +69,8 @@ Django REST framework と Vue.js を使った簡単なtodoアプリ
 
 https://docs.docker.jp/get-docker.html
 
+# Usage
+```bash
+git clone https://github.com/mayukorin/django-vue-todo.git
 
 
