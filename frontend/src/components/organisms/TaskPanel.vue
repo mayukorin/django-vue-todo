@@ -15,13 +15,13 @@
         </v-col>
       </v-row>
     </v-expansion-panel-header>
-    <v-expansion-panel-content class="px-4 grey--text">
+    <v-expansion-panel-content style="display: block" class="px-4 grey--text">
       <div v-if="task.deadline" class="foot-weight-bold">
         {{ formattedDate }} まで
       </div>
       <div v-else class="foot-weight-bold">期限なし</div>
-      <div>
-        <p style="white-space: pre">{{ task.content }}</p>
+      <div style="white-space: pre-line">
+        {{ task.content }}
       </div>
     </v-expansion-panel-content>
   </v-expansion-panel>

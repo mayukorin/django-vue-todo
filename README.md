@@ -69,5 +69,14 @@ Django REST framework と Vue.js を使った簡単なtodoアプリ
 
 https://docs.docker.jp/get-docker.html
 
+# Usage
+
+- `git clone https://github.com/mayukorin/django-vue-todo.git`
+- docker-compose.yml の front: 内にある `command: "npm run serve"` をコメントアウト
+- `docker-compose up`
+- `docker exec -it django-vue-todo_web_1 bash` で frontのコンテナ内に入る
+- コンテナ内で `npm install`
+- `exit` でコンテナを出る
+- 先ほどのコメントアウトを外して，`docker-compose up --build`
 
 
