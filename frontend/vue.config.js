@@ -14,6 +14,6 @@ module.exports = {
     index: {
       entry: "src/main.js",
       title: "TODO",
-    }
-  }
+    },
+  },
 };
