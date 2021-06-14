@@ -7,14 +7,19 @@ from django.conf import settings
 
 
 class UserManager(BaseUserManager):
-    def create_user(self, email, password, **extra_fields):
+    def create_user(self, request_data, **extra_fields):
 
-        if not email:
+        if not request_data["email"]:
             raise ValueError("メールアドレスは必須です")
 
-        user = self.model(email=self.normalize_email(email), **extra_fields)
+        user = self.model(
+            email=self.normalize_email(request_data["email"]), 
+            password=request_data["password"],
+            username=request_data["username"],
+            **extra_fields
+            )
 
-        user.set_password(password)
+        user.set_password(request_data["password"])
         user.save(using=self._db)
         return user
 

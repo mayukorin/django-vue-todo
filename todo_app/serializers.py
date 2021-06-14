@@ -40,10 +40,8 @@ class UserSerializer(serializers.ModelSerializer):
         return super().update(instance, validated_data)
 
     def create(self, validated_data):
-        raw_password = validated_data.get("password")
-        hashed_password = make_password(raw_password)
-        validated_data["password"] = hashed_password
-        return super().create(validated_data)
+       
+        return User.objects.create_user(request_data=validated_data)
 
 
 class TaskSerializer(serializers.ModelSerializer):
