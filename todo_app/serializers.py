@@ -25,25 +25,22 @@ class UserSerializer(serializers.ModelSerializer):
 
     def validate(self, data):
         confirm_password = data.get("confirm_password")
-        if confirm_password is None:
+
+        if self.instance is None or confirm_password is None:
             return data
-        previous_password = self.instance.password
-        if check_password(confirm_password, previous_password) is False:
+        if self.instance.check_password(confirm_password) is False:
             raise serializers.ValidationError("現在のパスワードが間違っています")
         return data
 
     def update(self, instance, validated_data):
         raw_password = validated_data.get("password")
         if raw_password is not None:
-            hashed_password = make_password(raw_password)
-            validated_data["password"] = hashed_password
+            instance.set_password(raw_password)
         return super().update(instance, validated_data)
 
     def create(self, validated_data):
-        raw_password = validated_data.get("password")
-        hashed_password = make_password(raw_password)
-        validated_data["password"] = hashed_password
-        return super().create(validated_data)
+       
+        return User.objects.create_user(request_data=validated_data)
 
 
 class TaskSerializer(serializers.ModelSerializer):
