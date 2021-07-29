@@ -14,6 +14,7 @@
 
 <script>
 import Button from "@/components/atoms/Button";
+import LoginForm from "@/components/molecules/LoginForm";
 export default {
   name: "LoginCard",
   components: {
