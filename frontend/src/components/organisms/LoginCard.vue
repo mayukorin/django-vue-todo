@@ -13,7 +13,6 @@
 </template>
 
 <script>
-import LoginForm from "@/components/molecules/LoginForm";
 import Button from "@/components/atoms/Button";
 export default {
   name: "LoginCard",
