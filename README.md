@@ -4,7 +4,7 @@ todoアプリ
 
 # DEMO
 
-[こちらにアクセス](https://django-vue-todo.herokuapp.com/)
+[こちらにアクセス](https://todo-django-vue2.herokuapp.com/login)
 
 # Features
 
